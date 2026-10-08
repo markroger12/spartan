@@ -1,0 +1,198 @@
+config-version: 1
+# Phase 4 experimental observation checks. No setting enables enforcement.
+# Old Phase 4 files with enabled: false remain disabled after upgrade.
+enabled: true
+# Bounded recent records per player; records are not persistent logs.
+evidence-capacity: 32
+grace:
+  join-ms: 3000
+  teleport-ms: 2000
+  velocity-ms: 1500
+  lag-ms: 2000
+health:
+  # Observed worker/tick delay and jitter, not a universal high-ping exemption.
+  maximum-delay-ms: 250
+  maximum-jitter-ms: 100
+safe-position:
+  minimum-samples: 5
+  maximum-age-ms: 2000
+timing:
+  window-ms: 2000
+  # Minecraft nominal tick duration. Only 50 is supported by this model.
+  nominal-tick-ms: 50
+  # Credit absorbs brief bunching after delay. Debt is cleared on impaired health.
+  bank-ms: 250
+  silence-ms: 1000
+  burst-ms: 200
+  burst-packets: 8
+# Every implemented check is experimental. These settings never enable punishment.
+# Tolerance units: blocks for geometry, milliseconds for TimerA, packet surplus for BlinkA.
+# GroundA uses a 0/1 unsupported-contact value. NoFallA uses accumulated fall distance.
+# Buffer decay is per second; uncertainty resets the buffer and cannot increase it.
+# bedrock-mode applies to Bedrock/unknown identities: disabled or diagnostic only.
+checks:
+  SpeedA:
+    enabled: true
+    tolerance: 0.03
+    increment: 1.0
+    decay-per-second: 0.25
+    buffer-threshold: 4.0
+    minimum-samples: 3
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  FlyA:
+    enabled: true
+    tolerance: 0.03
+    increment: 1.0
+    decay-per-second: 0.25
+    buffer-threshold: 4.0
+    minimum-samples: 3
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  TimerA:
+    enabled: true
+    tolerance: 150.0
+    increment: 1.0
+    decay-per-second: 0.25
+    buffer-threshold: 4.0
+    minimum-samples: 3
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  BlinkA:
+    enabled: true
+    tolerance: 0.03
+    increment: 1.0
+    decay-per-second: 0.25
+    buffer-threshold: 4.0
+    minimum-samples: 3
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  GroundA:
+    enabled: true
+    tolerance: 0.03
+    increment: 1.0
+    decay-per-second: 0.25
+    buffer-threshold: 4.0
+    minimum-samples: 3
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  NoFallA:
+    enabled: true
+    tolerance: 3.0
+    increment: 1.0
+    decay-per-second: 0.25
+    buffer-threshold: 4.0
+    minimum-samples: 3
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  StepA:
+    enabled: true
+    tolerance: 0.03
+    increment: 1.0
+    decay-per-second: 0.25
+    buffer-threshold: 4.0
+    minimum-samples: 3
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  ClimbA:
+    enabled: true
+    tolerance: 0.03
+    increment: 1.0
+    decay-per-second: 0.25
+    buffer-threshold: 4.0
+    minimum-samples: 3
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  LiquidA:
+    enabled: true
+    tolerance: 0.03
+    increment: 1.0
+    decay-per-second: 0.25
+    buffer-threshold: 4.0
+    minimum-samples: 3
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  NoSlowA:
+    # Required item/glide/vehicle model is unavailable; enabling is rejected.
+    enabled: false
+    tolerance: 0.03
+    increment: 1.0
+    decay-per-second: 0.25
+    buffer-threshold: 4.0
+    minimum-samples: 3
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  PhaseA:
+    enabled: true
+    tolerance: 0.03
+    increment: 1.0
+    decay-per-second: 0.25
+    buffer-threshold: 4.0
+    minimum-samples: 3
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  AccelerationA:
+    enabled: true
+    tolerance: 0.03
+    increment: 1.0
+    decay-per-second: 0.25
+    buffer-threshold: 4.0
+    minimum-samples: 3
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  GravityA:
+    enabled: true
+    tolerance: 0.03
+    increment: 1.0
+    decay-per-second: 0.25
+    buffer-threshold: 4.0
+    minimum-samples: 3
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  AirJumpA:
+    enabled: true
+    tolerance: 0.03
+    increment: 1.0
+    decay-per-second: 0.25
+    buffer-threshold: 4.0
+    minimum-samples: 3
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  SprintA:
+    enabled: true
+    tolerance: 0.03
+    increment: 1.0
+    decay-per-second: 0.25
+    buffer-threshold: 4.0
+    minimum-samples: 3
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  SneakA:
+    enabled: true
+    tolerance: 0.03
+    increment: 1.0
+    decay-per-second: 0.25
+    buffer-threshold: 4.0
+    minimum-samples: 3
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  ElytraA:
+    # Required item/glide/vehicle model is unavailable; enabling is rejected.
+    enabled: false
+    tolerance: 0.03
+    increment: 1.0
+    decay-per-second: 0.25
+    buffer-threshold: 4.0
+    minimum-samples: 3
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  VehicleA:
+    # Required item/glide/vehicle model is unavailable; enabling is rejected.
+    enabled: false
+    tolerance: 0.03
+    increment: 1.0
+    decay-per-second: 0.25
+    buffer-threshold: 4.0
+    minimum-samples: 3
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic

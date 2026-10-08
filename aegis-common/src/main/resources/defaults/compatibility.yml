@@ -1,0 +1,12 @@
+config-version: 1
+unknown-identity-profile: bedrock
+identity:
+  floodgate: true
+  geyser: true
+  poll-interval-ms: 1000
+  queries-per-tick: 8
+  maximum-age-ms: 3000
+  # Set only if these local providers cover ALL Bedrock paths, including proxies.
+  negative-results-authoritative: false
+  # Explicit topology assertion; positive Bedrock results and prior Bedrock identity take precedence.
+  java-only-server: false

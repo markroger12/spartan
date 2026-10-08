@@ -1,0 +1,49 @@
+# Phase 6 diagnostic policy. No setting enables cancellation or punishment.
+config-version: 1
+enabled: true
+evidence-capacity: 32
+grace-ms: 2000
+maximum-delay-ms: 250
+checks:
+  # Release-use action without a retained use start
+  UseOrderA:
+    enabled: true
+    limit: 0.0
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  # Use request observations exceed the full-window rate
+  FastUseA:
+    enabled: true
+    limit: 30.0
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  # Requires confirmed active item and consumption completion
+  FastEatA:
+    enabled: false
+    limit: 0.0
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  # Requires bow-specific charge and accepted projectile state
+  FastBowA:
+    enabled: false
+    limit: 0.0
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  # Requires authoritative health, effects and healing causes
+  RegenA:
+    enabled: false
+    limit: 0.0
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  # Requires authoritative death and respawn lifecycle
+  AutoRespawnA:
+    enabled: false
+    limit: 0.0
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  # Requires authoritative portal transition and menu state
+  PortalInventoryA:
+    enabled: false
+    limit: 0.0
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic

@@ -1,0 +1,298 @@
+config-version: 1
+# Applies to confirmed Bedrock and conservative UNKNOWN identities.
+# SUPPORTED means the normalized predicate can be reused diagnostically, not native-client certification.
+# ADJUSTED limit = base limit / sensitivity-multiplier + extra-tolerance.
+# A multiplier below 1 is less sensitive; 0.5 doubles the limit.
+mode: observe-only
+capture-translated-history: true
+history-size: 16
+history-max-age-ms: 5000
+checks:
+  SpeedA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  FlyA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  TimerA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  BlinkA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  GroundA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  NoFallA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  StepA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  ClimbA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  LiquidA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  NoSlowA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  PhaseA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  AccelerationA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  GravityA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  AirJumpA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  SprintA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  SneakA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  ElytraA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  VehicleA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  ReachA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  HitboxA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  AimA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  AimAssistA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  InvalidAttackA:
+    mode: BEDROCK_SUPPORTED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  AttackTimingA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  ImpossibleInteractionA:
+    mode: BEDROCK_SUPPORTED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  RotationA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  AutoClickerA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  MultiAuraA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  KillAuraA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  NoSwingA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  AttackPatternA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  CriticalsA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  VelocityA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  BlockReachA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  DirectionA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  RotationPlacementA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  GhostHandA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  FastPlaceA:
+    mode: BEDROCK_ADJUSTED
+    sensitivity-multiplier: 0.5
+    extra-tolerance: 0.0
+  NukerA:
+    mode: BEDROCK_ADJUSTED
+    sensitivity-multiplier: 0.5
+    extra-tolerance: 0.0
+  InvalidDigA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  LiquidInteractionA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  ScaffoldA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  TowerA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  ImpossiblePlaceA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  FastBreakA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  ImpossibleBreakA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  UseOrderA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  FastUseA:
+    mode: BEDROCK_ADJUSTED
+    sensitivity-multiplier: 0.5
+    extra-tolerance: 0.0
+  FastEatA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  FastBowA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  RegenA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  AutoRespawnA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  PortalInventoryA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  InventoryMoveA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  InventorySprintA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  InvalidSlotA:
+    mode: BEDROCK_SUPPORTED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  ImpossibleInventoryA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  SlotSpoofA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  BadPacketsA:
+    mode: BEDROCK_SUPPORTED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  InvalidPositionA:
+    mode: BEDROCK_SUPPORTED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  InvalidPitchA:
+    mode: BEDROCK_SUPPORTED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  InvalidSequenceA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  TransactionA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  InvalidEntityInteractionA:
+    mode: BEDROCK_SUPPORTED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  ImpossibleClientStateA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  PacketOrderA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  PacketSpamA:
+    mode: BEDROCK_ADJUSTED
+    sensitivity-multiplier: 0.5
+    extra-tolerance: 0.0
+  MovementSpamA:
+    mode: BEDROCK_ADJUSTED
+    sensitivity-multiplier: 0.5
+    extra-tolerance: 0.0
+  InteractionSpamA:
+    mode: BEDROCK_ADJUSTED
+    sensitivity-multiplier: 0.5
+    extra-tolerance: 0.0
+  PayloadSpamA:
+    mode: BEDROCK_ADJUSTED
+    sensitivity-multiplier: 0.5
+    extra-tolerance: 0.0
+  PayloadSizeA:
+    mode: BEDROCK_SUPPORTED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0
+  BookExploitA:
+    mode: BEDROCK_DISABLED
+    sensitivity-multiplier: 1.0
+    extra-tolerance: 0.0

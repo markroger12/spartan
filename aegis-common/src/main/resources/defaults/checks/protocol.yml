@@ -1,0 +1,55 @@
+# Phase 6 diagnostic policy. No setting enables cancellation or punishment.
+config-version: 1
+enabled: true
+evidence-capacity: 32
+grace-ms: 2000
+maximum-delay-ms: 250
+checks:
+  # Nonfinite numeric values in normalized inbound observations
+  BadPacketsA:
+    enabled: true
+    limit: 0.0
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  # Reported position exceeds the protocol coordinate envelope
+  InvalidPositionA:
+    enabled: true
+    limit: 0.0
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  # Reported pitch outside minus 90 through 90 degrees
+  InvalidPitchA:
+    enabled: true
+    limit: 0.0
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  # Modern interaction sequence repeats or reverses
+  InvalidSequenceA:
+    enabled: true
+    limit: 0.0
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  # Unmatched or ambiguous timing acknowledgement
+  TransactionA:
+    enabled: true
+    limit: 0.0
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  # Self interaction or nonfinite target-local vector
+  InvalidEntityInteractionA:
+    enabled: true
+    limit: 0.0
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  # Reported flight after an observed server flight prohibition
+  ImpossibleClientStateA:
+    enabled: true
+    limit: 0.0
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  # Position reports while an observed teleport is unconfirmed
+  PacketOrderA:
+    enabled: true
+    limit: 0.0
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic

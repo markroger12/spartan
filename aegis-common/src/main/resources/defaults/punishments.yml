@@ -1,0 +1,801 @@
+config-version: 1
+# Explicit opt-in; diagnostics and uncertain evidence can NEVER punish.
+enabled: false
+allow-experimental: false
+window-ms: 60000
+decay-ms: 60000
+cooldown-ms: 60000
+maximum-evidence-age-ms: 500
+checks:
+  SpeedA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  FlyA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  TimerA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  BlinkA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  GroundA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  NoFallA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  StepA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  ClimbA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  LiquidA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  NoSlowA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  PhaseA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  AccelerationA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  GravityA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  AirJumpA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  SprintA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  SneakA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  ElytraA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  VehicleA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  ReachA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  HitboxA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  AimA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  AimAssistA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  InvalidAttackA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  AttackTimingA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  ImpossibleInteractionA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  RotationA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  AutoClickerA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  MultiAuraA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  KillAuraA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  NoSwingA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  AttackPatternA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  CriticalsA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  VelocityA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  BlockReachA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  DirectionA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  RotationPlacementA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  GhostHandA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  FastPlaceA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  NukerA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  InvalidDigA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  LiquidInteractionA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  ScaffoldA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  TowerA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  ImpossiblePlaceA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  FastBreakA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  ImpossibleBreakA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  UseOrderA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  FastUseA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  FastEatA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  FastBowA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  RegenA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  AutoRespawnA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  PortalInventoryA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  InventoryMoveA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  InventorySprintA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  InvalidSlotA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  ImpossibleInventoryA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  SlotSpoofA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  BadPacketsA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  InvalidPositionA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  InvalidPitchA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  InvalidSequenceA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  TransactionA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  InvalidEntityInteractionA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  ImpossibleClientStateA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  PacketOrderA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  PacketSpamA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  MovementSpamA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  InteractionSpamA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  PayloadSpamA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  PayloadSizeA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'
+  BookExploitA:
+    enabled: false
+    minimum-vl: 10.0
+    minimum-category-risk: 20.0
+    minimum-total-risk: 40.0
+    minimum-confidence: 90.0
+    minimum-findings: 5
+    risk-weight: 2.0
+    confidence: 50.0
+    commands:
+      - 'kick %player% Unfair advantage (%check%)'

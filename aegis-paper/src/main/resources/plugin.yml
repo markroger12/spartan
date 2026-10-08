@@ -1,0 +1,241 @@
+name: AegisAC
+version: '${version}'
+main: dev.aegisac.paper.AegisPlugin
+api-version: '1.21'
+description: Original anti-cheat foundation. Phase 10 scheduler hardening; Folia runtime support remains gated.
+author: AegisAC contributors
+# PacketEvents is supplied as a separate plugin; never bundled or initialized twice.
+depend: [packetevents]
+softdepend: [floodgate, Geyser-Spigot, ViaVersion, ViaBackwards]
+# No folia-supported flag: service ownership migration and independent live validation remain required.
+commands:
+  ac:
+    description: AegisAC administration
+    aliases: [aegisac]
+    usage: /ac help
+permissions:
+  aegisac.admin:
+    description: All administrative commands
+    default: op
+    children:
+      aegisac.help: true
+      aegisac.version: true
+      aegisac.reload: true
+      aegisac.profile: true
+      aegisac.performance: true
+      aegisac.connection: true
+      aegisac.physics: true
+      aegisac.checks: true
+      aegisac.movement: true
+      aegisac.safeposition: true
+      aegisac.combat: true
+      aegisac.cps: true
+      aegisac.inspect: true
+      aegisac.edition: true
+      aegisac.bedrock: true
+      aegisac.alerts: true
+      aegisac.verbose: true
+      aegisac.violations: true
+      aegisac.logs: true
+      aegisac.panic: true
+      aegisac.output: true
+      aegisac.debug: true
+      aegisac.toggle: true
+      aegisac.reset: true
+      aegisac.exempt: true
+      aegisac.bypass.manage: true
+      aegisac.freeze: true
+      aegisac.unfreeze: true
+      aegisac.top: true
+      aegisac.gui: true
+      aegisac.punishment: true
+      aegisac.profile.set: true
+  aegisac.help:
+    default: op
+  aegisac.version:
+    default: op
+  aegisac.reload:
+    default: op
+  aegisac.profile:
+    default: op
+  aegisac.performance:
+    default: op
+  aegisac.connection:
+    default: op
+  aegisac.physics:
+    default: op
+  aegisac.checks:
+    default: op
+  aegisac.movement:
+    default: op
+  aegisac.safeposition:
+    default: op
+  aegisac.bypass:
+    description: Explicit check bypass; not granted automatically to operators or administrators.
+    default: false
+  aegisac.bypass.speeda:
+    default: false
+  aegisac.bypass.flya:
+    default: false
+  aegisac.bypass.timera:
+    default: false
+  aegisac.bypass.blinka:
+    default: false
+  aegisac.bypass.grounda:
+    default: false
+  aegisac.bypass.nofalla:
+    default: false
+  aegisac.bypass.stepa:
+    default: false
+  aegisac.bypass.climba:
+    default: false
+  aegisac.bypass.liquida:
+    default: false
+  aegisac.bypass.phasea:
+    default: false
+  aegisac.bypass.accelerationa:
+    default: false
+  aegisac.bypass.gravitya:
+    default: false
+  aegisac.bypass.airjumpa:
+    default: false
+  aegisac.bypass.sprinta:
+    default: false
+  aegisac.bypass.sneaka:
+    default: false
+  aegisac.combat:
+    default: op
+  aegisac.cps:
+    default: op
+  aegisac.bypass.reacha:
+    default: false
+  aegisac.bypass.hitboxa:
+    default: false
+  aegisac.bypass.aima:
+    default: false
+  aegisac.bypass.rotationa:
+    default: false
+  aegisac.bypass.autoclickera:
+    default: false
+  aegisac.bypass.multiauraa:
+    default: false
+  aegisac.bypass.killauraa:
+    default: false
+  aegisac.bypass.noswinga:
+    default: false
+  aegisac.bypass.attackpatterna:
+    default: false
+  aegisac.bypass.criticalsa:
+    default: false
+  aegisac.bypass.velocitya:
+    default: false
+  aegisac.bypass.aimassista:
+    default: false
+  aegisac.bypass.invalidattacka:
+    default: false
+  aegisac.bypass.attacktiminga:
+    default: false
+  aegisac.bypass.impossibleinteractiona:
+    default: false
+  aegisac.inspect:
+    default: op
+  aegisac.bypass.blockreacha:
+    default: false
+  aegisac.bypass.directiona:
+    default: false
+  aegisac.bypass.rotationplacementa:
+    default: false
+  aegisac.bypass.ghosthanda:
+    default: false
+  aegisac.bypass.fastplacea:
+    default: false
+  aegisac.bypass.nukera:
+    default: false
+  aegisac.bypass.invaliddiga:
+    default: false
+  aegisac.bypass.liquidinteractiona:
+    default: false
+  aegisac.bypass.scaffolda:
+    default: false
+  aegisac.bypass.towera:
+    default: false
+  aegisac.bypass.impossibleplacea:
+    default: false
+  aegisac.bypass.useordera:
+    default: false
+  aegisac.bypass.fastusea:
+    default: false
+  aegisac.bypass.inventorymovea:
+    default: false
+  aegisac.bypass.inventorysprinta:
+    default: false
+  aegisac.bypass.invalidslota:
+    default: false
+  aegisac.bypass.impossibleinventorya:
+    default: false
+  aegisac.bypass.slotspoofa:
+    default: false
+  aegisac.bypass.badpacketsa:
+    default: false
+  aegisac.bypass.invalidpositiona:
+    default: false
+  aegisac.bypass.invalidpitcha:
+    default: false
+  aegisac.bypass.invalidsequencea:
+    default: false
+  aegisac.bypass.transactiona:
+    default: false
+  aegisac.bypass.invalidentityinteractiona:
+    default: false
+  aegisac.bypass.impossibleclientstatea:
+    default: false
+  aegisac.bypass.packetordera:
+    default: false
+  aegisac.bypass.packetspama:
+    default: false
+  aegisac.bypass.movementspama:
+    default: false
+  aegisac.bypass.interactionspama:
+    default: false
+  aegisac.bypass.payloadspama:
+    default: false
+  aegisac.bypass.payloadsizea:
+    default: false
+  aegisac.edition:
+    default: op
+  aegisac.bedrock:
+    default: op
+  aegisac.alerts:
+    default: op
+  aegisac.verbose:
+    default: op
+  aegisac.violations:
+    default: op
+  aegisac.logs:
+    default: op
+  aegisac.panic:
+    default: op
+  aegisac.output:
+    default: op
+  aegisac.debug:
+    default: op
+  aegisac.toggle:
+    default: op
+  aegisac.reset:
+    default: op
+  aegisac.exempt:
+    default: op
+  aegisac.bypass.manage:
+    default: op
+  aegisac.freeze:
+    default: op
+  aegisac.unfreeze:
+    default: op
+  aegisac.top:
+    default: op
+  aegisac.gui:
+    default: op
+  aegisac.punishment:
+    default: op
+  aegisac.profile.set:
+    default: op

@@ -1,0 +1,85 @@
+# Phase 6 diagnostic policy. No setting enables cancellation or punishment.
+config-version: 1
+enabled: true
+evidence-capacity: 32
+grace-ms: 2000
+maximum-delay-ms: 250
+checks:
+  # Eye-to-clicked-block distance exceeds sampled block range
+  BlockReachA:
+    enabled: true
+    limit: 0.1
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  # Reported block face lies opposite the attacker eye
+  DirectionA:
+    enabled: true
+    limit: 0.0
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  # Reported placement ray misses clicked block
+  RotationPlacementA:
+    enabled: true
+    limit: 0.0
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  # Captured solid shape intersects the eye-to-target segment
+  GhostHandA:
+    enabled: true
+    limit: 0.0
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  # Placement observations exceed the full-window rate
+  FastPlaceA:
+    enabled: true
+    limit: 30.0
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  # Distinct completed dig targets exceed the full-window budget
+  NukerA:
+    enabled: true
+    limit: 12.0
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  # Completed or cancelled dig does not match the observed start
+  InvalidDigA:
+    enabled: true
+    limit: 0.0
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  # Dig completion targets captured water or lava
+  LiquidInteractionA:
+    enabled: true
+    limit: 0.0
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  # Rapid below-feet placements combine with ray mismatch
+  ScaffoldA:
+    enabled: true
+    limit: 0.0
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  # Repeated vertical below-feet placement progression
+  TowerA:
+    enabled: true
+    limit: 0.0
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  # Placement cursor or face is outside protocol bounds
+  ImpossiblePlaceA:
+    enabled: true
+    limit: 0.0
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  # Requires hardness, tools, enchantments and acknowledged block state
+  FastBreakA:
+    enabled: false
+    limit: 0.0
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  # Requires authoritative break eligibility and server acceptance
+  ImpossibleBreakA:
+    enabled: false
+    limit: 0.0
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
