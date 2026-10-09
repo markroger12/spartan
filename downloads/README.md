@@ -1,11 +1,20 @@
-# Verified workspace build
+# Verified development builds
 
-This copy provides a direct GitHub download while the fresh-runner CI setup is being completed. It is the existing Phase 10 workspace build: 510 tests passed and the shaded jar passed configuration/SQLite verification. See ../VALIDATION.md for its original build evidence.
+Download [AegisAC 0.11.0-SNAPSHOT](AegisAC-0.11.0-SNAPSHOT.jar) using GitHub's
+**Download raw file** button. This direct copy avoids the chat artifact download path.
+It is the verified workspace build; GitHub Actions publishes independent builds with
+source/run identifiers and their own checksums.
 
-- Jar: AegisAC-0.10.0-SNAPSHOT.jar
-- Size: 12,880,395 bytes
-- Requires standalone PacketEvents 2.14.0.
-- Compiled against Paper API 1.21.11 / Java 21.
-- Folia loading remains disabled; this is not a production-certified release.
+- Phase 11: 536 tests passed plus packaged configuration/SQLite/dependency isolation checks.
+- Size: 12,909,200 bytes.
+- SHA-256: `df980779e0cfa6f9e35b9d8de5d3c2afb21252f71faaa132f478f49f7865d893`.
+- Requires standalone PacketEvents 2.14.0; compile baseline Paper API 1.21.11 / Java 21.
+- Folia is disabled; this is a development snapshot, not a production-certified release.
+- See [validation](../VALIDATION.md) and [trace/replay tools](../PHASE11.md).
 
-The application source was uploaded in commit b96705ed14d0a3ba53163f0a49ee4dc9f004698e. These bytes were built in the earlier validated workspace, not by GitHub Actions. Future Actions builds produce their own checksums and source identifiers.
+[SHA256SUMS](SHA256SUMS) covers both retained jars. Phase 10 remains available as
+`AegisAC-0.10.0-SNAPSHOT.jar`; its independent successful CI run and original workspace
+validation are recorded in [the Phase 10 report](../docs/validation/phase10.md).
+
+The GitHub Actions artifacts `AegisAC-Phase11` and `AegisAC-Phase11-tools` contain the
+plugin and separate development CLI, respectively. JMH is not inside the plugin jar.

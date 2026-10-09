@@ -6,6 +6,19 @@ public final class PacketMetrics {
     private final LongAdder enqueued = new LongAdder(), processed = new LongAdder(), dropped = new LongAdder();
     private final LongAdder decodeRejected = new LongAdder(), executorRejected = new LongAdder(), failures = new LongAdder();
     private final LongAdder queued = new LongAdder(), active = new LongAdder(), nanos = new LongAdder();
+    private final LongAdder checkEvaluations=new LongAdder(),movementEvaluations=new LongAdder(),movementNanos=new LongAdder();
+    public void evaluated() { checkEvaluations.increment(); }
+    public void movementEvaluation(long elapsed) { movementEvaluations.increment();movementNanos.add(Math.max(0,elapsed)); }
+    private final LongAdder checkBatches=new LongAdder(),checkNanos=new LongAdder(),debugDropped=new LongAdder();
+    public void checkBatch(long elapsed) { checkBatches.increment();checkNanos.add(Math.max(0,elapsed)); }
+    public void debugDropped(long count) { debugDropped.add(count); }
+    public AnalysisSnapshot analysis() { return new AnalysisSnapshot(checkBatches.sum(),checkNanos.sum(),debugDropped.sum(),checkEvaluations.sum(),movementEvaluations.sum(),movementNanos.sum()); }
+    /** One batch is the guard + movement + combat dispatch for a normalized packet (including gates).
+     * It includes physics/state work between those dispatches; it is not an individual evaluator timer. */
+    public record AnalysisSnapshot(long batches,long nanos,long droppedDebugRecords,long checkEvaluations,long movementEvaluations,long movementNanos) {
+        public double averageMovementMicros() { return movementEvaluations==0?0:movementNanos/(1000.0*movementEvaluations); }
+        public double averageMicros() { return batches==0?0:nanos/(1000.0*batches); }
+    }
     public void tracked(PacketDirection direction) { (direction == PacketDirection.INBOUND ? inbound : outbound).increment(); }
     public void untracked() { untracked.increment(); }
     public void enqueued() { enqueued.increment(); queued.increment(); }

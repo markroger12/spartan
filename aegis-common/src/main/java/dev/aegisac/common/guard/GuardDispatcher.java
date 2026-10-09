@@ -4,6 +4,8 @@ import dev.aegisac.common.config.GuardSettings;
 import java.util.*;
 /** Phase 6 diagnostics never enter a trusted buffer, risk score or enforcement path. */
 public final class GuardDispatcher {
+    private dev.aegisac.common.packet.PacketMetrics metrics;
+    public void metrics(dev.aegisac.common.packet.PacketMetrics value) { metrics=value; }
     private java.util.function.Consumer<dev.aegisac.common.output.Detection> sink=d->{};
     public void output(java.util.function.Consumer<dev.aegisac.common.output.Detection> sink) { this.sink=sink; }
     private static final class State {
@@ -30,7 +32,7 @@ public final class GuardDispatcher {
         boolean exempt=gates.stream().anyMatch(Set.of("PERMISSION_BYPASS","WORLD_EXEMPT","GAMEMODE","FLIGHT_ALLOWED","TIMING_GRACE","SPECIAL_MOVEMENT")::contains)
                 ||gates.contains("UNKNOWN_EDITION")&&rule.bedrockMode().equals("disabled");
         if(observed==null||!Double.isFinite(observed)) { s.status="SUPPRESSED"; return; }
-        s.evaluated++;
+        s.evaluated++; if(metrics!=null)metrics.evaluated();
         boolean mismatch=observed>rule.limit(); s.status=mismatch&&!exempt?"DIAGNOSTIC":"SUPPRESSED";
         if(mismatch&&!exempt&&(!s.seen||time-s.last>=rule.cooldownMillis()*1_000_000L)) {
             s.seen=true; s.last=time; s.diagnostics++;

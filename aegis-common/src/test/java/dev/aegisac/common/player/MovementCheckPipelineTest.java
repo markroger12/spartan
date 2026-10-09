@@ -68,4 +68,14 @@ class MovementCheckPipelineTest {
         assertEquals("SUPPRESSED",data.snapshot(now).movementChecks().checks().get("SpeedA").status());
         assertNull(data.snapshot(now).movementChecks().safePosition());
     }
+    @Test void metricsCountApplicableChecksAndTimeEvaluatorsAcrossMonitorResets() {
+        var metrics=new PacketMetrics();data.configureMetrics(metrics);
+        for(int tick=0;tick<20;tick++) { now=tick*50_000_000L;capture();move(tick%2,1,0); }
+        var before=metrics.analysis();assertEquals(20,before.batches());assertTrue(before.checkEvaluations()>0);
+        assertTrue(before.movementEvaluations()>0);assertTrue(before.averageMovementMicros()>=0);
+        config.set(config(2,noGrace()));
+        for(int tick=20;tick<40;tick++) { now=tick*50_000_000L;capture();move(tick%2,1,0); }
+        var after=metrics.analysis();assertEquals(40,after.batches());assertTrue(after.checkEvaluations()>before.checkEvaluations());
+        assertTrue(after.movementEvaluations()>before.movementEvaluations());
+    }
 }

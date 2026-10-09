@@ -116,3 +116,17 @@ only after checking the detached PGP signatures from Maven Central:
 GPG's local web-of-trust was not initialized or overridden. These are checks of
 published signatures/provenance, not a claim of independently certified maintainer
 identity. Gradle still enforces SHA-256 for every pinned artifact.
+
+## Phase 11 development-only benchmarks
+
+`aegis-tools` pins JMH core/annotation processor 1.37 (latest listed by OpenJDK's Maven
+Central metadata when checked), jopt-simple 5.0.4 and commons-math3 3.6.1. The plugin
+runtime does not depend on this module. New JAR/POM SHA-256 pins were computed only
+after fetching from Maven Central HTTPS and verifying its detached PGP signatures.
+JMH uses key `019082BC00E0324E2AEF4CF00D3B328562A119A7`; jopt-simple uses
+`517B94F8D0A46317A28D8AB30DA8A5EC02D11EAD`; commons-math3 uses
+`41A1A08C62FCA78B79D3081164A16FAAEC16A4BE`. Parent POMs commons-parent 39 and Apache 16
+verified against `808D78B17A5A2D7C3668E31FBFFC9B54721244AD` and
+`0CDE80149711EB46DFF17AE421A24B3F8B0F594A`; those keys expired after their signing dates.
+Keys were retrieved through the Ubuntu HTTPS keyserver; no local web-of-trust identity
+certification is claimed. Existing pins and signature/TLS checking were not weakened.

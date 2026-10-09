@@ -14,6 +14,7 @@ import java.util.*;
 
 /** Worker-owned Phase 6 state; all platform reads arrive as immutable owner observations. */
 public final class GuardMonitor {
+    public void metrics(dev.aegisac.common.packet.PacketMetrics value) { dispatcher.metrics(value); }
     private Set<String> manualBypasses=Set.of();
     public void manualBypasses(Set<String> values) { manualBypasses=Set.copyOf(values); }
     private Set<String> combined(Set<String> values) { if(manualBypasses.isEmpty()) return values; var result=new HashSet<>(values); result.addAll(manualBypasses); return Set.copyOf(result); }

@@ -12,6 +12,7 @@ import java.util.*;
 
 /** Worker-owned bounded combat observations. No observation here establishes client execution. */
 public final class CombatMonitor {
+    public void metrics(dev.aegisac.common.packet.PacketMetrics value) { dispatcher.metrics(value); }
     private Set<String> manualBypasses=Set.of();
     public void manualBypasses(Set<String> values) { manualBypasses=Set.copyOf(values); }
     private Set<String> combined(Set<String> values) { if(manualBypasses.isEmpty()) return values; var result=new HashSet<>(values); result.addAll(manualBypasses); return Set.copyOf(result); }

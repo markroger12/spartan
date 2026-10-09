@@ -5,6 +5,8 @@ import dev.aegisac.common.config.CombatSettings;
 import java.util.*;
 /** Independent combat buffers; speculative evidence cannot enter global risk or enforcement. */
 public final class CombatDispatcher {
+    private dev.aegisac.common.packet.PacketMetrics metrics;
+    public void metrics(dev.aegisac.common.packet.PacketMetrics value) { metrics=value; }
     private java.util.function.Consumer<dev.aegisac.common.output.Detection> sink=d->{};
     public void output(java.util.function.Consumer<dev.aegisac.common.output.Detection> sink) { this.sink=sink; }
     private static final class State {
@@ -32,7 +34,7 @@ public final class CombatDispatcher {
                 || gates.contains("UNKNOWN_EDITION")&&rule.bedrockMode().equals("disabled");
         s.reasons=Set.copyOf(gates);
         if(!value.applicable()) { s.buffer.reset(); s.status="SUPPRESSED"; if(gates.isEmpty()) s.reasons=Set.of("INSUFFICIENT_CONTEXT"); return; }
-        s.evaluated++;
+        s.evaluated++; if(metrics!=null)metrics.evaluated();
         boolean mismatch=value.excess()>rule.tolerance();
         if(!gates.isEmpty()) {
             s.buffer.reset(); s.status=mismatch&&!exempt?"DIAGNOSTIC":"SUPPRESSED";

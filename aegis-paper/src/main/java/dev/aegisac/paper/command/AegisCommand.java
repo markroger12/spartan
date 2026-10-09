@@ -176,6 +176,12 @@ public final class AegisCommand implements CommandExecutor, TabCompleter {
                 var metrics = plugin.metrics().snapshot();
                 var pipeline = plugin.metrics().pipeline();
                 var values = new java.util.HashMap<String, String>();
+                var analysis=plugin.metrics().analysis();
+                values.put("check_evaluations",Long.toString(analysis.checkEvaluations()));
+                values.put("movement_eval_us",String.format(java.util.Locale.ROOT,"%.3f",analysis.averageMovementMicros()));
+                values.put("analysis_batches",Long.toString(analysis.batches()));
+                values.put("analysis_us",String.format(java.util.Locale.ROOT,"%.2f",analysis.averageMicros()));
+                values.put("debug_dropped",Long.toString(analysis.droppedDebugRecords()));
                 values.put("captures", Long.toString(plugin.captures().captured()));
                 values.put("capture_failures", Long.toString(plugin.captures().failed()));
                 values.put("players", Integer.toString(plugin.players().size()));

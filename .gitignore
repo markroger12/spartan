@@ -5,3 +5,6 @@
 run/
 .local/
 dist/
+
+# Real development traces contain private session observations.
+*.aegistrace

@@ -41,6 +41,7 @@ import java.util.logging.Level;
 public class AegisPlugin extends JavaPlugin implements Listener {
     private static final java.util.regex.Pattern PLACEHOLDER = java.util.regex.Pattern.compile("%([a-z_]+)%");
     private final PlayerRegistry players = new PlayerRegistry();
+    private final java.util.concurrent.atomic.AtomicBoolean developmentTraceClaimed=new java.util.concurrent.atomic.AtomicBoolean();
     private final PacketMetrics metrics = new PacketMetrics();
     private final AtomicBoolean reloading = new AtomicBoolean();
     private volatile boolean stopping;
@@ -162,6 +163,12 @@ public class AegisPlugin extends JavaPlugin implements Listener {
                 directory.detach(uuid); outputs.detach(uuid); identities.detach(uuid); captures.detach(uuid); packets.detach(uuid); players.quit(uuid);
                 getLogger().warning("PacketEvents has no transport for joined player "+uuid+"; session not monitored");
             } else {
+                if(uuid.toString().equals(System.getProperty("aegisac.development.trace-player",""))&&developmentTraceClaimed.compareAndSet(false,true)) {
+                    var recorder=new dev.aegisac.common.trace.TraceRecorder(getDataFolder().toPath().resolve("development-traces"),metrics,
+                            error->getLogger().warning("Development trace failed: "+error.getMessage()));
+                    data.configureTrace(recorder);
+                    getLogger().warning("Development trace enabled for selected session: 60 seconds, 2000 records, 16 MiB maximum. Keep files private.");
+                }
                 directory.attach(player,data);
                 outputs.attach(uuid,data);
                 identities.attach(uuid,data);

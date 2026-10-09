@@ -37,7 +37,7 @@ jobs:
         id: plugin
         uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5
         with:
-          name: AegisAC-Phase10
+          name: AegisAC-Phase11
           path: dist/
           if-no-files-found: error
           retention-days: 90
@@ -45,7 +45,14 @@ jobs:
         env:
           ARTIFACT_URL: ${{ steps.plugin.outputs.artifact-url }}
         run: |
-          printf '## AegisAC plugin download\n\n[Download AegisAC-Phase10](%s) while signed in to GitHub. Extract the ZIP to obtain the plugin jar and SHA256SUMS.\n\nRequires standalone PacketEvents 2.14.0. Folia runtime support remains disabled.\n' "$ARTIFACT_URL" >> "$GITHUB_STEP_SUMMARY"
+          printf '## AegisAC plugin download\n\n[Download AegisAC-Phase11](%s) while signed in to GitHub. Extract the ZIP to obtain the plugin jar and SHA256SUMS.\n\nRequires standalone PacketEvents 2.14.0. Folia runtime support remains disabled.\n' "$ARTIFACT_URL" >> "$GITHUB_STEP_SUMMARY"
+      - name: Upload offline development tools
+        uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5
+        with:
+          name: AegisAC-Phase11-tools
+          path: aegis-tools/build/distributions/*.zip
+          if-no-files-found: error
+          retention-days: 90
       - name: Upload build reports
         uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5
         if: always()

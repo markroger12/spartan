@@ -4,6 +4,8 @@ import java.util.concurrent.atomic.AtomicReference;
 public final class WorldView {
     public record State(long revision, WorldSnapshot snapshot, boolean closed) { }
     private final AtomicReference<State> state = new AtomicReference<>(new State(0,null,false));
+    /** Offline replay only; callers must isolate this view from owner publication. */
+    public void restoreForReplay(State observation) { state.set(java.util.Objects.requireNonNull(observation)); }
     public State read() { return state.get(); }
     public void invalidate() { state.updateAndGet(s->new State(s.revision()+1,null,s.closed())); }
     public boolean publish(State expected, WorldSnapshot snapshot) {

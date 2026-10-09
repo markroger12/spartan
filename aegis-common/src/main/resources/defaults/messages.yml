@@ -17,7 +17,7 @@ messages:
   connection-usage: '&eUsage: /ac connection <online-player>'
   # RTT=-1 means unavailable, not zero latency. Brand is client-reported, never trusted identity.
   connection: '&b%player% &7transaction=%transaction_rtt%ms keepalive=%keepalive_rtt%ms jitter=%jitter%ms pending=%pending% uncertain=%uncertain% loss=%loss_epoch% brand=%brand%'
-  performance: '&7Players=%players% inbound=%inbound% outbound=%outbound% untracked=%untracked% processed=%processed% queued=%queued% dropped=%dropped% decode-rejected=%decode_rejected% failures=%failures% executor-rejected=%executor_rejected% captures=%captures% capture-failures=%capture_failures% generation=%generation%'
+  performance: '&7Check evaluations=%check_evaluations% movement-eval-avg=%movement_eval_us%us analysis-batches=%analysis_batches% analysis-avg=%analysis_us%us debug-drops=%debug_dropped% Players=%players% inbound=%inbound% outbound=%outbound% untracked=%untracked% processed=%processed% queued=%queued% dropped=%dropped% decode-rejected=%decode_rejected% failures=%failures% executor-rejected=%executor_rejected% captures=%captures% capture-failures=%capture_failures% generation=%generation%'
   physics-usage: '&eUsage: /ac physics <online-player>'
   # Residual=-1 means no comparison; residual is not a violation or an enforcement threshold.
   physics: '&b%player% &7model=%model% candidates=%candidates% residual=%residual% uncertainty=%uncertainty% (diagnostic only)'
