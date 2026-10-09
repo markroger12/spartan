@@ -1,20 +1,18 @@
 # Verified development builds
 
-Download [AegisAC 0.11.0-SNAPSHOT](AegisAC-0.11.0-SNAPSHOT.jar) using GitHub's
-**Download raw file** button. This direct copy avoids the chat artifact download path.
-It is the verified workspace build; GitHub Actions publishes independent builds with
-source/run identifiers and their own checksums.
+[Download AegisAC 0.12.0-SNAPSHOT](AegisAC-0.12.0-SNAPSHOT.jar) using GitHub's
+**Download raw file** button. This copy is the verified workspace candidate and avoids
+the failed chat download path. The CI artifact has its own source manifest and signed
+provenance bundle; see [RELEASE.md](../RELEASE.md).
 
-- Phase 11: 536 tests passed plus packaged configuration/SQLite/dependency isolation checks.
-- Size: 12,909,200 bytes.
-- SHA-256: `df980779e0cfa6f9e35b9d8de5d3c2afb21252f71faaa132f478f49f7865d893`.
-- Requires standalone PacketEvents 2.14.0; compile baseline Paper API 1.21.11 / Java 21.
-- Folia is disabled; this is a development snapshot, not a production-certified release.
-- See [validation](../VALIDATION.md) and [trace/replay tools](../PHASE11.md).
+- 543 Java tests plus 4 candidate integrity tests passed; packaged SQLite/YAML/isolation checks passed.
+- Size: 12,909,203 bytes.
+- SHA-256: `d00573aee5e1b90f816be6416596f42ced23c6873017f7213dc51e0ea40dc63c`.
+- Requires separate PacketEvents Spigot 2.14.0; compile baseline Paper API 1.21.11 / Java 21.
+- Folia remains disabled; live hosted trial and production acceptance are pending.
 
-[SHA256SUMS](SHA256SUMS) covers both retained jars. Phase 10 remains available as
-`AegisAC-0.10.0-SNAPSHOT.jar`; its independent successful CI run and original workspace
-validation are recorded in [the Phase 10 report](../docs/validation/phase10.md).
-
-The GitHub Actions artifacts `AegisAC-Phase11` and `AegisAC-Phase11-tools` contain the
-plugin and separate development CLI, respectively. JMH is not inside the plugin jar.
+[SHA256SUMS](SHA256SUMS) covers the retained Phase 10/11/12 jars. The successful Actions
+candidate artifact **AegisAC-Phase12** includes the plugin, tools ZIP, defaults, docs,
+source/status manifest and checksums. Repository push runs additionally publish
+**AegisAC-Phase12-provenance** after signing and verification. Verify the actual signature;
+a checksum or unsigned workspace copy alone does not certify the publisher.

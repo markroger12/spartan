@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "stage": "development-candidate",
+  "folia_enabled": false,
+  "live_paper_acceptance": false,
+  "live_folia_acceptance": false,
+  "staged_observation_completed": false,
+  "configuration_schema": 1,
+  "compile_baseline": "Paper API 1.21.11 / Java 21",
+  "runtime_dependency": "PacketEvents Spigot 2.14.0",
+  "unavailable_checks": ["NoSlowA", "ElytraA", "VehicleA", "FastBreakA", "ImpossibleBreakA", "FastEatA", "FastBowA", "RegenA", "AutoRespawnA", "PortalInventoryA", "BookExploitA"]
+}

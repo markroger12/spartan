@@ -299,3 +299,10 @@ Edits require current generation, validated unchanged disk documents and a curre
 permission/session check. The exact prior edited file is retained in
 `.last-admin-edit.bak`; its new form contains merged defaults. External edits require
 reload before using the editor. No command writes arbitrary YAML paths or commands.
+
+## Candidate preflight and upgrade
+
+The offline tools command `preflight CONFIG_DIR --alert-only` validates a bounded
+temporary copy, reports missing defaults/migrations and refuses enabled global
+punishments/setbacks. It leaves operator files untouched. See UPGRADING.md for exact
+schema preservation and rollback, and PHASE11.md for development-only JVM trace options.

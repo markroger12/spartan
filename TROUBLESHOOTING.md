@@ -195,3 +195,11 @@ Java/Bedrock profile overrides cannot enable unavailable models or enforcement.
 - **Folia TPS unknown in adapter fixtures:** global cadence is not region-local TPS.
   PlayerDirectory now samples entity cadence; new or stale samples remain unknown.
   This is tick cadence, not MSPT.
+
+## Candidate/preflight verification
+
+Use the direct GitHub jar or successful Actions candidate artifact if chat artifact
+download fails. Verify the exact checksum; RELEASE.md explains signed provenance.
+Preflight failures leave original settings unchanged. `--alert-only` refuses enabled
+global actions; unknown/future schema and restart-only changes require UPGRADING.md's
+procedure. A OuiPanel console URL supplies no API authentication by itself.

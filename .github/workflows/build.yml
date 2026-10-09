@@ -9,7 +9,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: build-${{ github.event.pull_request.head.ref || github.ref_name }}
+  group: build-${{ github.event_name }}-${{ github.event.pull_request.head.ref || github.ref_name }}
   cancel-in-progress: true
 
 jobs:
@@ -27,32 +27,25 @@ jobs:
         run: echo '238e777fcddd7e34f9708186085def2abd6e08e658505b38718d79d74c21abd5  gradle/wrapper/gradle-wrapper.jar' | sha256sum -c -
       - name: Build, test and verify distribution
         run: ./gradlew --no-daemon clean build --no-build-cache --console=plain
-      - name: Prepare plugin download
+      - name: Validate release documentation and tooling
         run: |
-          mkdir -p dist
-          cp aegis-paper/build/libs/AegisAC-*.jar dist/
-          (cd dist && sha256sum AegisAC-*.jar > SHA256SUMS)
-          printf '%s\n' "Source commit: $GITHUB_SHA" "Build run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" 'Requires standalone PacketEvents 2.14.0.' 'Development snapshot: Folia runtime support remains disabled.' > dist/BUILD_INFO.txt
-      - name: Upload plugin download
+          python3 -m unittest discover -s scripts/tests -v
+          python3 scripts/release.py check-docs
+          python3 scripts/release.py prepare dist/candidate
+          python3 scripts/release.py verify dist/candidate
+      - name: Upload development candidate
         id: plugin
         uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5
         with:
-          name: AegisAC-Phase11
-          path: dist/
+          name: AegisAC-Phase12
+          path: dist/candidate/
           if-no-files-found: error
           retention-days: 90
       - name: Add download link to build summary
         env:
           ARTIFACT_URL: ${{ steps.plugin.outputs.artifact-url }}
         run: |
-          printf '## AegisAC plugin download\n\n[Download AegisAC-Phase11](%s) while signed in to GitHub. Extract the ZIP to obtain the plugin jar and SHA256SUMS.\n\nRequires standalone PacketEvents 2.14.0. Folia runtime support remains disabled.\n' "$ARTIFACT_URL" >> "$GITHUB_STEP_SUMMARY"
-      - name: Upload offline development tools
-        uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5
-        with:
-          name: AegisAC-Phase11-tools
-          path: aegis-tools/build/distributions/*.zip
-          if-no-files-found: error
-          retention-days: 90
+          printf '## AegisAC development candidate\n\n[Download Phase 12](%s). Extract and verify SHA256SUMS. See RELEASE.md for provenance and OPERATIONS.md for the alert-only trial.\n\nRequires standalone PacketEvents 2.14.0. Folia remains disabled.\n' "$ARTIFACT_URL" >> "$GITHUB_STEP_SUMMARY"
       - name: Upload build reports
         uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5
         if: always()
@@ -63,3 +56,49 @@ jobs:
             **/build/reports/dependency-verification/
           if-no-files-found: ignore
           retention-days: 14
+
+  provenance:
+    needs: build
+    if: github.event_name == 'push' && github.repository == 'markroger12/spartan'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      id-token: write
+      attestations: write
+      artifact-metadata: write
+    steps:
+      - uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0 # v5
+        with:
+          name: AegisAC-Phase12
+          path: candidate
+      - name: Verify downloaded candidate checksums
+        working-directory: candidate
+        run: sha256sum -c SHA256SUMS
+      - name: Sign candidate provenance
+        id: attest
+        uses: actions/attest@1e69f48acb82d1966a394da916b4c1698aa569d6 # v4.2.2
+        with:
+          subject-path: |
+            candidate/*.jar
+            candidate/*.zip
+            candidate/release-manifest.json
+            candidate/SHA256SUMS
+          create-storage-record: false
+      - name: Verify signed plugin identity and source
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh attestation verify candidate/AegisAC-*.jar --repo "$GITHUB_REPOSITORY" --signer-workflow "$GITHUB_REPOSITORY/.github/workflows/build.yml" --source-digest "$GITHUB_SHA" --source-ref "$GITHUB_REF"
+      - name: Preserve signed bundle
+        env:
+          BUNDLE_PATH: ${{ steps.attest.outputs.bundle-path }}
+        run: |
+          mkdir provenance
+          cp "$BUNDLE_PATH" provenance/attestation.sigstore.json
+      - name: Upload candidate provenance
+        uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5
+        with:
+          name: AegisAC-Phase12-provenance
+          path: provenance/
+          if-no-files-found: error
+          retention-days: 90

@@ -1,4 +1,4 @@
-# Developer API — Phase 10 ownership milestone
+# Developer API — development candidate 0.12
 
 Compile against `aegis-api` without shading it into your integration plugin, and
 declare `depend: [AegisAC]` (or use softdepend plus explicit absence handling).
@@ -21,6 +21,7 @@ read-only API methods are thread-safe:
 
 - `player(UUID)` returns an optional immutable `PlayerSnapshot`.
 - `onlinePlayers()` returns the active registry size.
+- `violations(UUID)` returns immutable current policy scores; diagnostics never add risk.
 - `configurationGeneration()` identifies the last successfully published snapshot.
 
 Snapshots include UUID, username, session ID, join time, client identity,
@@ -36,9 +37,9 @@ and exact transport binding stops late packets from feeding a reconnect. Plugin
 disable closes and removes all sessions; API consumers must release the service
 when the plugin unloads.
 
-Violation, exemption, flag, setback and punishment methods/events arrive with the
-corresponding working engines in later phases. There are no placeholder APIs that
-pretend those operations succeeded. This pre-release API can evolve before 1.0.
+Scores and the Paper output events are implemented as described below. Exemptions and
+staff controls remain internal. There is no public trusted-flag injection or mutable
+punishment API. This pre-release API can evolve before 1.0.
 
 
 ## Phase 2 snapshot additions
@@ -183,8 +184,8 @@ for AegisAC menus, and any previously cancelled click is respected.
 ## Phase 10 scheduling boundary
 
 The public API remains immutable. Internal scheduler adapters are not a new supported
-external scheduling API. Bukkit events/effects are still production-supported only
-on the conventional adapter; do not infer Folia support from packaged native adapter
+external scheduling API. Bukkit events/effects are enabled only
+on the conventional adapter; live production acceptance is pending; do not infer Folia support from packaged native adapter
 classes. World uncertainty can include `REGION_NOT_OWNED`. Consumers must treat any
 uncertainty as a gate, not a trusted empty geometry sample.
 

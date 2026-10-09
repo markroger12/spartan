@@ -1,6 +1,6 @@
-# Phase 10 ownership milestone project tree
+# Phase 12 development candidate project tree
 
-Git/Gradle caches and generated build outputs are omitted, except the explicit verified download.
+Caches and generated build outputs are omitted. Verified download jars and historical upgrade fixtures are explicit.
 
 ```text
 .github/workflows/build.yml
@@ -9,12 +9,16 @@ API.md
 ARCHITECTURE.md
 BEDROCK.md
 CHECKS.md
+COMPATIBILITY.md
 CONFIGURATION.md
 DEPENDENCIES.md
 FOLIA.md
 INSTALLATION.md
 LICENSE
+OPERATIONS.md
 PHASE10.md
+PHASE11.md
+PHASE12.md
 PHASE2.md
 PHASE3.md
 PHASE4.md
@@ -25,8 +29,10 @@ PHASE8.md
 PHASE9.md
 PROJECT_TREE.md
 README.md
+RELEASE.md
 THIRD_PARTY_NOTICES.md
 TROUBLESHOOTING.md
+UPGRADING.md
 VALIDATION.md
 aegis-api/build.gradle.kts
 aegis-api/gradle.lockfile
@@ -127,6 +133,12 @@ aegis-common/src/main/java/dev/aegisac/common/physics/Uncertainty.java
 aegis-common/src/main/java/dev/aegisac/common/player/PacketState.java
 aegis-common/src/main/java/dev/aegisac/common/player/PlayerData.java
 aegis-common/src/main/java/dev/aegisac/common/player/PlayerRegistry.java
+aegis-common/src/main/java/dev/aegisac/common/trace/AnalysisFingerprint.java
+aegis-common/src/main/java/dev/aegisac/common/trace/TraceCodec.java
+aegis-common/src/main/java/dev/aegisac/common/trace/TraceEntry.java
+aegis-common/src/main/java/dev/aegisac/common/trace/TraceFile.java
+aegis-common/src/main/java/dev/aegisac/common/trace/TraceRecorder.java
+aegis-common/src/main/java/dev/aegisac/common/trace/TraceReplay.java
 aegis-common/src/main/java/dev/aegisac/common/world/BlockSample.java
 aegis-common/src/main/java/dev/aegisac/common/world/WorldSnapshot.java
 aegis-common/src/main/java/dev/aegisac/common/world/WorldView.java
@@ -177,6 +189,7 @@ aegis-common/src/test/java/dev/aegisac/common/config/GuardConfigurationTest.java
 aegis-common/src/test/java/dev/aegisac/common/config/MovementConfigurationTest.java
 aegis-common/src/test/java/dev/aegisac/common/config/PhysicsConfigurationTest.java
 aegis-common/src/test/java/dev/aegisac/common/config/PipelineConfigurationTest.java
+aegis-common/src/test/java/dev/aegisac/common/config/UpgradeCompatibilityTest.java
 aegis-common/src/test/java/dev/aegisac/common/connection/ConnectionTrackerTest.java
 aegis-common/src/test/java/dev/aegisac/common/connection/TransactionTrackerTest.java
 aegis-common/src/test/java/dev/aegisac/common/guard/GuardDispatcherTest.java
@@ -193,7 +206,10 @@ aegis-common/src/test/java/dev/aegisac/common/player/MovementCheckPipelineTest.j
 aegis-common/src/test/java/dev/aegisac/common/player/PacketStateTest.java
 aegis-common/src/test/java/dev/aegisac/common/player/PhysicsPipelineTest.java
 aegis-common/src/test/java/dev/aegisac/common/player/PlayerLifecycleTest.java
+aegis-common/src/test/java/dev/aegisac/common/trace/TraceTest.java
 aegis-common/src/test/java/dev/aegisac/common/world/WorldViewTest.java
+aegis-common/src/test/resources/upgrades/README.txt
+aegis-common/src/test/resources/upgrades/phase11-defaults.zip
 aegis-paper/build.gradle.kts
 aegis-paper/gradle.lockfile
 aegis-paper/src/main/java/dev/aegisac/paper/AegisPlugin.java
@@ -251,8 +267,23 @@ aegis-paper/src/test/java/dev/aegisac/paper/scheduler/OwnershipHarness.java
 aegis-paper/src/test/java/dev/aegisac/paper/world/ScheduledCaptureTest.java
 aegis-paper/src/test/java/dev/aegisac/paper/world/WorldCaptureServiceTest.java
 aegis-paper/src/test/java/dev/aegisac/paper/world/WorldCaptureTest.java
+aegis-tools/build.gradle.kts
+aegis-tools/gradle.lockfile
+aegis-tools/src/main/java/dev/aegisac/tools/AegisBenchmark.java
+aegis-tools/src/main/java/dev/aegisac/tools/CheckBenchmark.java
+aegis-tools/src/main/java/dev/aegisac/tools/DevelopmentTools.java
+aegis-tools/src/main/java/dev/aegisac/tools/FixtureCorpus.java
+aegis-tools/src/main/java/dev/aegisac/tools/SessionLoad.java
+aegis-tools/src/main/java/dev/aegisac/tools/release/ConfigurationPreflight.java
+aegis-tools/src/test/java/dev/aegisac/tools/ConfigurationPreflightTest.java
+aegis-tools/src/test/java/dev/aegisac/tools/ReplayCorpusTest.java
 build.gradle.kts
+docs/performance/phase11-jmh.json.gz
+docs/performance/phase11-load.txt
+docs/performance/phase11.md
 docs/validation/phase1.md
+docs/validation/phase10.md
+docs/validation/phase11.md
 docs/validation/phase2.md
 docs/validation/phase3.md
 docs/validation/phase4.md
@@ -262,6 +293,8 @@ docs/validation/phase7.md
 docs/validation/phase8.md
 docs/validation/phase9.md
 downloads/AegisAC-0.10.0-SNAPSHOT.jar
+downloads/AegisAC-0.11.0-SNAPSHOT.jar
+downloads/AegisAC-0.12.0-SNAPSHOT.jar
 downloads/README.md
 downloads/SHA256SUMS
 gradle.properties
@@ -270,5 +303,8 @@ gradle/wrapper/gradle-wrapper.jar
 gradle/wrapper/gradle-wrapper.properties
 gradlew
 gradlew.bat
+release/status.json
+scripts/release.py
+scripts/tests/test_release.py
 settings.gradle.kts
 ```

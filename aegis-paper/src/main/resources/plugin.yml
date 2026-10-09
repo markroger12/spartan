@@ -2,7 +2,7 @@ name: AegisAC
 version: '${version}'
 main: dev.aegisac.paper.AegisPlugin
 api-version: '1.21'
-description: Original anti-cheat foundation. Phase 10 scheduler hardening; Folia runtime support remains gated.
+description: Experimental anti-cheat development candidate. Observation-first deployment; Folia remains disabled.
 author: AegisAC contributors
 # PacketEvents is supplied as a separate plugin; never bundled or initialized twice.
 depend: [packetevents]

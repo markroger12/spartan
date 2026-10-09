@@ -1,8 +1,8 @@
 # AegisAC
 
 An original Minecraft anti-cheat project developed in independently verifiable
-phases. **Phase 11 adds bounded development traces, offline diagnostic replay,
-synthetic fixtures, JMH benchmarks, session load tests and analysis metrics.** Native
+phases. **Phase 12 prepares a development candidate with upgrade validation, operator
+documentation, checksum packaging and signed CI provenance.** Native
 lifecycle acceptance and independent live Paper/Folia validation remain unfinished;
 Folia loading is deliberately blocked.
 This is not a validated production protection release.
@@ -11,7 +11,15 @@ Read [ARCHITECTURE.md](ARCHITECTURE.md) for the project tree, ownership model an
 complete twelve-phase roadmap. All source is in this repository; no proprietary
 anti-cheat source or algorithms were copied.
 
-## Phase 11 development tools
+## Phase 12 release preparation
+
+- [Compatibility matrix](COMPATIBILITY.md) distinguishes build evidence from pending live acceptance.
+- [Upgrade and rollback](UPGRADING.md), [alert-only operations](OPERATIONS.md), and [release verification](RELEASE.md).
+- Exact Phase 11 configuration fixtures and an offline `preflight ... --alert-only` command.
+- Complete candidate packaging, checksums, source manifest and isolated GitHub provenance signing.
+- [PHASE12.md](PHASE12.md) describes the milestone; [VALIDATION.md](VALIDATION.md) records checks.
+
+## Retained Phase 11 development tools
 
 - Opt-in recording for one selected session, with bounded queues, duration, records and disk output.
 - Offline replay validates integrity, analysis settings, gaps and unsupported replay state.
@@ -35,7 +43,7 @@ anti-cheat source or algorithms were copied.
 The verified workspace jar is also available in [downloads/](downloads/README.md).
 
 Open the repository's **Actions** tab, select a successful **Build and download
-AegisAC** run for the desired branch, and download **AegisAC-Phase11** under
+AegisAC** run for the desired branch, and download **AegisAC-Phase12** under
 **Artifacts** while signed in to GitHub. Extract the ZIP to obtain the plugin jar,
 `SHA256SUMS` and the source commit/build-run information. Downloads are retained for
 90 days. Failed builds do not publish a plugin artifact. The jar requires standalone
@@ -126,6 +134,8 @@ The packet and configuration foundation also provides:
 - JUnit tests for core state, YAML, migrations, concurrency, plugin bootstrap and
   packet adapter behavior, real-buffer decoder fixtures, and an isolated test of the actual shaded jar.
 
+[Compatibility](COMPATIBILITY.md) · [Upgrade/rollback](UPGRADING.md) · [Operations](OPERATIONS.md) · [Release verification](RELEASE.md)
+
 ## Requirements and build
 
 Use a **JDK 21** (not just a JRE). The checksummed Gradle 9.8.0 wrapper is included.
@@ -135,7 +145,7 @@ Dependency versions and official research sources are in [DEPENDENCIES.md](DEPEN
 ./gradlew build
 ```
 
-The deployable file is `aegis-paper/build/libs/AegisAC-0.11.0-SNAPSHOT.jar`.
+The deployable file is `aegis-paper/build/libs/AegisAC-0.12.0-SNAPSHOT.jar`.
 Do not install the `unbundled` or `sources` jars. PacketEvents **2.14.0** must be
 installed separately. SnakeYAML is bundled and relocated; SQLite JDBC is bundled with native resources. Server APIs are not.
 

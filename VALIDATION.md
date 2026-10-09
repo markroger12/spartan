@@ -1,69 +1,58 @@
-# Phase 11 validation — 2026-10-09 (Asia/Karachi)
+# Phase 12 validation — 2026-10-10 (Asia/Karachi)
 
-The final workspace build of `0.11.0-SNAPSHOT` passed with Java 21.0.12.1 and the
-pinned Gradle 9.8.0 wrapper:
+Final Java 21.0.12.1 / Gradle 9.8.0 workspace command:
 
 ```sh
 JAVA_HOME=/workspace/.tools/jdk-21 GRADLE_USER_HOME=/workspace/.tools/gradle-home ./gradlew clean build :aegis-tools:installDist --no-build-cache --console=plain
+python3 -m unittest discover -s scripts/tests -v
+python3 scripts/release.py check-docs
 ```
 
-**BUILD SUCCESSFUL in 1m 18s; all 31 actionable tasks executed.**
+**BUILD SUCCESSFUL in 1m 3s; all 32 actionable tasks executed.**
 
 | Suite | Tests | Failures/errors/skipped |
 |---|---:|---:|
-| common | 360 | 0 / 0 / 0 |
+| common | 364 | 0 / 0 / 0 |
 | Paper | 157 | 0 / 0 / 0 |
-| development tools | 19 | 0 / 0 / 0 |
-| Total | 536 | 0 / 0 / 0 |
+| tools | 22 | 0 / 0 / 0 |
+| Java total | 543 | 0 / 0 / 0 |
+| Python candidate integrity | 4 | 0 / 0 / 0 |
 
-The API module has no test sources and is not counted as a passing test suite.
-The jar smoke test loaded the actual distribution with only a JDK parent, generated
-all 24 configuration documents, opened bundled SQLite, checked relocated YAML, and
-rejected JMH/tools/server classes leaking into the plugin. Existing deprecation warnings
-remain in two test APIs and Gradle's pre-10 compatibility report; they are not failures.
+The API module has no tests and is not counted. Packaging smoke verifies relocated
+YAML, generation of all 24 documents, bundled SQLite and absence of server/JMH/tools
+classes in the deployable jar. Existing test-API/Gradle deprecation warnings remain.
 
-Final plugin jar: `aegis-paper/build/libs/AegisAC-0.11.0-SNAPSHOT.jar`
+Jar: `AegisAC-0.12.0-SNAPSHOT.jar`, 12,909,203 bytes.
+SHA-256: `d00573aee5e1b90f816be6416596f42ced23c6873017f7213dc51e0ea40dc63c`.
+Requires standalone PacketEvents Spigot 2.14.0; compile baseline Paper API 1.21.11 / Java 21.
 
-- Size: 12,909,200 bytes.
-- SHA-256: `df980779e0cfa6f9e35b9d8de5d3c2afb21252f71faaa132f478f49f7865d893`.
-- Runtime dependency: standalone PacketEvents 2.14.0.
-- Compile baseline: Paper API 1.21.11 / Java 21.
+Exact Phase 11 defaults load byte-preserving with safe actions. Disabled categories /
+custom messages, legacy migration backups/idempotence, future-schema rejection and
+restart-only active-generation fences pass. Offline preflight validates bounded copies,
+leaves source defaults/migrations untouched and refuses enabled global actions in
+alert-only mode. The installed CLI separately preflighted the Phase 11 fixture settings.
+Python integrity tests reject modified/missing/extra files, traversal, symlinks,
+duplicate checksum records and false certification. Current documentation links pass.
 
-## Replay and measurement evidence
+Local candidate preparation/verification is run before publication; dirty local packages
+are explicitly labelled. The CI workflow independently prepares clean-source candidates
+and signs/verifies repository push provenance through GitHub OIDC/Sigstore. Actual CI
+run/signature evidence is added to the draft PR after those operations complete.
+Workspace checksums alone are not signed provenance.
 
-All 24 normalized packet variants round-trip, including nonfinite diagnostic input.
-Tests reject damaged/truncated/unknown/oversized trace data, invalid ordering and
-mismatched analysis configuration. Record/directory budgets, async draining and
-reload/session recording fences are exercised. Applicable evaluation counters survive
-monitor resets. The corpus runs 15 legitimate synthetic cases and two suspicious cases
-through disk serialization and isolated replay; special mechanics retain uncertainty.
-High-ping replay verifies a 600 ms transaction RTT; the lag fixture preserves loss epoch.
-A 256-session/16,384-packet cleanup load is part of the test suite.
+Local logs: `/workspace/.tools/phase12-clean.log`, `phase12-preflight.log` and
+`phase12-package.log`. Historical Phase 11 performance measurements are retained;
+no runtime hot-loop optimization or new capacity claim was made in Phase 12.
 
-The installed CLI separately generated the corpus and replayed walking/high-ping traces.
-Walking produced two **diagnostics**, zero trusted findings and explicit inferred-input /
-unacknowledged-world uncertainty. This is not a zero-diagnostic false-positive claim.
-The larger load processed 200,000 normalized packets across 2,000 sessions with zero
-drops/failures and no retained queues after cleanup, in about 2.40 seconds. It omits
-network decoding, owner captures and server work and does not establish live capacity.
+## Pending live acceptance
 
-[JMH results and raw measurements](docs/performance/phase11.md) cover throughput,
-sampled latency and allocation for three physics workloads and two evaluators with
-two forks and warmup. Shared-host tails are noisy; no production SLO or optimization
-claim follows from these short measurements.
+The operator supplied OuiPanel server `d5579107` and stated a test server with an existing
+EULA agreement is available. The workspace has no authenticated panel binding or signed-in
+browser access. Requests to its console/API-shaped route return dashboard HTML, not server
+state. Current Paper/PacketEvents versions and installed candidate behavior are unverified.
+No jar/configuration/server state was changed remotely; no EULA was accepted by the agent.
+Staged alert-only observation remains pending in OPERATIONS.md and release/status.json.
+Folia/native lifecycle and other live platform/provider gates remain open. See
+COMPATIBILITY.md and FOLIA.md. This is a development candidate, not a production-certified release.
 
-Local logs: `/workspace/.tools/phase11-final.log`, `phase11-jmh.log`, `phase11-load.log`
-and `phase11-cli-final.log`. These paths are workspace evidence, not portable downloads.
-The GitHub workflow independently rebuilds/tests and uploads the plugin and tools.
-
-## Remaining acceptance gates
-
-Replay is observational; it cannot reproduce all asynchronous owner publications or
-missing prior history. Manual exemption/freeze recordings are rejected. Real-client
-trace conformance and independent live Paper/Folia acceptance were **not run**.
-Folia remains disabled; Phase 10 native lifecycle and service gates in [FOLIA.md](FOLIA.md)
-remain open. Paper 26.2 / Java 25 runtime compatibility is not certified. Punishment /
-setback safeguards and unavailable models remain unchanged.
-
-Usage and limits: [PHASE11.md](PHASE11.md). Previous evidence:
-[Phase 10](docs/validation/phase10.md), [Phase 9](docs/validation/phase9.md).
+[Phase 11 evidence](docs/validation/phase11.md) · [Release procedure](RELEASE.md) · [Phase 12](PHASE12.md)
