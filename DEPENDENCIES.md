@@ -85,3 +85,34 @@ were added directly. The shaded-jar check opens SQLite with only a JDK parent lo
 Sources: https://github.com/xerial/sqlite-jdbc and
 https://repo.maven.apache.org/maven2/org/xerial/sqlite-jdbc/3.53.4.0/ .
 The JDBC driver version is distinct from Minecraft/server compatibility.
+
+## Fresh GitHub runner metadata (2026-10-09)
+
+A fresh runner exposed 18 missing metadata pins that the original Gradle cache did
+not need to fetch. Version selections and dependency locks are unchanged. Existing
+verification entries were retained; metadata verification remains enabled.
+
+Fourteen artifacts were fetched over Maven Central HTTPS and checked against its published
+SHA-256 sidecars: Groovy BOM 4.0.27 POM/module, Jackson BOM 2.19.2 POM, Jackson parent
+2.19.3 POM, JUnit BOM 5.13.1/5.13.4/5.14.1/5.14.2 modules, and FasterXML parent 69 POM. The remaining SHA-256-verified metadata comprises JUnit
+BOM 5.12.2/5.10.3/5.7.1 modules, JUnit BOM 6.1.3 POM and Groovy BOM 4.0.22 module.
+
+Four artifacts do not publish SHA-256 sidecars. Their SHA-256 pins were calculated
+only after checking the detached PGP signatures from Maven Central:
+
+- Log4j parent and BOM 2.26.1 POMs: verified with ASF Logging's key
+  `077E8893A6DCC33DD4A4D5B256E73BA9A0B592D0`, obtained from
+  <https://downloads.apache.org/logging/KEYS> over HTTPS.
+- Spring Framework BOM 5.3.39 module: verified with key
+  `48B086A7D843CFA258E83286928FBF39003C0425`, retrieved by full fingerprint from
+  Ubuntu's HTTPS public key server. The same key verified the corresponding Maven
+  Central POM signature, and that POM matched the pre-existing SHA-256 pin.
+
+- Guava parent 33.3.1-jre POM: verified with key
+  `BDB5FA4FE719D787FB3D3197F6D4A1D411E9D1AE`, retrieved by full fingerprint from
+  Ubuntu's HTTPS public key server. The same key verified the Guava 33.3.1-jre
+  module, which matched its pre-existing SHA-256 pin.
+
+GPG's local web-of-trust was not initialized or overridden. These are checks of
+published signatures/provenance, not a claim of independently certified maintainer
+identity. Gradle still enforces SHA-256 for every pinned artifact.

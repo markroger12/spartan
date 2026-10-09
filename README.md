@@ -23,6 +23,8 @@ anti-cheat source or algorithms were copied.
 
 ## Download a build from GitHub
 
+The verified workspace jar is also available in [downloads/](downloads/README.md).
+
 Open the repository's **Actions** tab, select a successful **Build and download
 AegisAC** run for the desired branch, and download **AegisAC-Phase10** under
 **Artifacts** while signed in to GitHub. Extract the ZIP to obtain the plugin jar,

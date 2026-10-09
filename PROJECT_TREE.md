@@ -1,6 +1,6 @@
 # Phase 10 ownership milestone project tree
 
-Git/Gradle caches and generated build outputs are omitted.
+Git/Gradle caches and generated build outputs are omitted, except the explicit verified download.
 
 ```text
 .github/workflows/build.yml
@@ -261,6 +261,9 @@ docs/validation/phase6.md
 docs/validation/phase7.md
 docs/validation/phase8.md
 docs/validation/phase9.md
+downloads/AegisAC-0.10.0-SNAPSHOT.jar
+downloads/README.md
+downloads/SHA256SUMS
 gradle.properties
 gradle/verification-metadata.xml
 gradle/wrapper/gradle-wrapper.jar
