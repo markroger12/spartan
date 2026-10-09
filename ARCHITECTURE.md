@@ -231,3 +231,14 @@ cross from a source-owner grant to global dispatch with bounded age and data fen
 
 FOLIA.md audits native lifecycle/GUI teardown, actual dependency and command integration,
 and independent Paper/Folia acceptance. The production support gate remains closed.
+
+## Phase 11 development observations and measurement
+
+`aegis-common/trace` owns the bounded versioned DTO format, asynchronous one-session
+recorder, analysis fingerprint and isolated replay. Only an explicit development JVM
+option wires a recorder into the Paper session lifecycle. Capture is entry-observational:
+asynchronous owner publications and missing prior history are reported fidelity limits.
+`aegis-tools` owns the executable synthetic corpus, CLI, JMH annotation processor and
+load harness; no JMH dependency reaches `aegis-paper`. Check counters persist across
+monitor replacements and timings distinguish geometry evaluators from whole analysis
+batches. See PHASE11.md for exact bounds, commands and unresolved acceptance gates.

@@ -1,146 +1,69 @@
-# Phase 10 ownership milestone validation
+# Phase 11 validation — 2026-10-09 (Asia/Karachi)
 
-Validated on 2026-10-08 (UTC), JDK 21 and Gradle 9.8.0.
-**This validates the scheduling and service ownership milestone, not complete Folia runtime support.**
-Historical Phase 1–9 reports are retained under `docs/validation/`.
-
-## Executed build
+The final workspace build of `0.11.0-SNAPSHOT` passed with Java 21.0.12.1 and the
+pinned Gradle 9.8.0 wrapper:
 
 ```sh
-cd /workspace/spartan
-JAVA_HOME=/workspace/.tools/jdk-21 GRADLE_USER_HOME=/workspace/.tools/gradle-home \
-  ./gradlew clean build --no-build-cache --console=plain
+JAVA_HOME=/workspace/.tools/jdk-21 GRADLE_USER_HOME=/workspace/.tools/gradle-home ./gradlew clean build :aegis-tools:installDist --no-build-cache --console=plain
 ```
 
-**BUILD SUCCESSFUL in 1m 22s; all 21 actionable tasks executed.**
-**510 tests passed; 0 failures, 0 errors, 0 skipped.**
-Common: 353; Paper: 157. API has no test sources;
-NO-SOURCE is not counted as testing. Clean removed prior results, and build-cache
-reuse was disabled. The results below supersede intermediate runs.
+**BUILD SUCCESSFUL in 1m 18s; all 31 actionable tasks executed.**
 
-Log: `/workspace/.tools/aegis-phase10-verified.log`. XML/HTML reports are in each
-module's `build/test-results/test` and `build/reports/tests/test`.
+| Suite | Tests | Failures/errors/skipped |
+|---|---:|---:|
+| common | 360 | 0 / 0 / 0 |
+| Paper | 157 | 0 / 0 / 0 |
+| development tools | 19 | 0 / 0 / 0 |
+| Total | 536 | 0 / 0 / 0 |
 
-| Suite | Tests | Failures | Errors | Skipped |
-| --- | ---: | ---: | ---: | ---: |
-| BedrockMonitorTest | 4 | 0 | 0 | 0 |
-| EditionPolicyTest | 13 | 0 | 0 | 0 |
-| IdentityResolverTest | 5 | 0 | 0 | 0 |
-| CheckBufferTest | 3 | 0 | 0 | 0 |
-| MovementDispatcherTest | 6 | 0 | 0 | 0 |
-| MovementEvaluatorTest | 28 | 0 | 0 | 0 |
-| MovementMonitorTest | 6 | 0 | 0 | 0 |
-| MovementTimingTest | 5 | 0 | 0 | 0 |
-| SafePositionTest | 2 | 0 | 0 | 0 |
-| CollisionSolverTest | 9 | 0 | 0 | 0 |
-| CombatDispatcherTest | 3 | 0 | 0 | 0 |
-| CombatGeometryTest | 5 | 0 | 0 | 0 |
-| CombatMonitorTest | 16 | 0 | 0 | 0 |
-| SwingMatcherTest | 3 | 0 | 0 | 0 |
-| TargetHistoryTest | 6 | 0 | 0 | 0 |
-| CombatConfigurationTest | 13 | 0 | 0 | 0 |
-| ConfigurationTest | 23 | 0 | 0 | 0 |
-| ConfigurationTransactionTest | 20 | 0 | 0 | 0 |
-| GuardConfigurationTest | 15 | 0 | 0 | 0 |
-| MovementConfigurationTest | 14 | 0 | 0 | 0 |
-| PhysicsConfigurationTest | 9 | 0 | 0 | 0 |
-| PipelineConfigurationTest | 12 | 0 | 0 | 0 |
-| ConnectionTrackerTest | 5 | 0 | 0 | 0 |
-| TransactionTrackerTest | 7 | 0 | 0 | 0 |
-| GuardDispatcherTest | 3 | 0 | 0 | 0 |
-| GuardMonitorTest | 17 | 0 | 0 | 0 |
-| RateWindowTest | 3 | 0 | 0 | 0 |
-| OutputPolicyTest | 28 | 0 | 0 | 0 |
-| BrandDecoderTest | 1 | 0 | 0 | 0 |
-| SerialPacketQueueTest | 5 | 0 | 0 | 0 |
-| PhysicsReplayTest | 28 | 0 | 0 | 0 |
-| EditionPipelineTest | 8 | 0 | 0 | 0 |
-| MovementCheckPipelineTest | 4 | 0 | 0 | 0 |
-| PacketStateTest | 8 | 0 | 0 | 0 |
-| PhysicsPipelineTest | 5 | 0 | 0 | 0 |
-| PlayerLifecycleTest | 9 | 0 | 0 | 0 |
-| WorldViewTest | 2 | 0 | 0 | 0 |
-| BootstrapTest | 13 | 0 | 0 | 0 |
-| PacketEngineTest | 2 | 0 | 0 | 0 |
-| PacketNormalizerTest | 16 | 0 | 0 | 0 |
-| PacketPipelineIntegrationTest | 4 | 0 | 0 | 0 |
-| AdminMenuTest | 25 | 0 | 0 | 0 |
-| ScheduledAdminTest | 3 | 0 | 0 | 0 |
-| IdentityServiceTest | 8 | 0 | 0 | 0 |
-| OfficialIdentityProviderTest | 5 | 0 | 0 | 0 |
-| AsyncLogStoreTest | 4 | 0 | 0 | 0 |
-| OutputServiceTest | 14 | 0 | 0 | 0 |
-| ScheduledOutputTest | 8 | 0 | 0 | 0 |
-| VerifiedSetbackTest | 8 | 0 | 0 | 0 |
-| WebhookWorkerTest | 4 | 0 | 0 | 0 |
-| PlayerDirectoryTest | 4 | 0 | 0 | 0 |
-| BukkitPlatformSchedulerTest | 7 | 0 | 0 | 0 |
-| FoliaPlatformSchedulerTest | 8 | 0 | 0 | 0 |
-| ManagedTasksTest | 6 | 0 | 0 | 0 |
-| ScheduledCaptureTest | 4 | 0 | 0 | 0 |
-| WorldCaptureServiceTest | 3 | 0 | 0 | 0 |
-| WorldCaptureTest | 11 | 0 | 0 | 0 |
+The API module has no test sources and is not counted as a passing test suite.
+The jar smoke test loaded the actual distribution with only a JDK parent, generated
+all 24 configuration documents, opened bundled SQLite, checked relocated YAML, and
+rejected JMH/tools/server classes leaking into the plugin. Existing deprecation warnings
+remain in two test APIs and Gradle's pre-10 compatibility report; they are not failures.
 
-## Packaged artifact
+Final plugin jar: `aegis-paper/build/libs/AegisAC-0.11.0-SNAPSHOT.jar`
 
-- File: `aegis-paper/build/libs/AegisAC-0.10.0-SNAPSHOT.jar`
-- Size: 12880395 bytes
-- SHA-256: `861cb3807662d0e6eb91fdb8c923f80b912b1b863e43c02441e3a33a1a5ddd83`
+- Size: 12,909,200 bytes.
+- SHA-256: `df980779e0cfa6f9e35b9d8de5d3c2afb21252f71faaa132f478f49f7865d893`.
+- Runtime dependency: standalone PacketEvents 2.14.0.
+- Compile baseline: Paper API 1.21.11 / Java 21.
 
-The packaged-jar verification loaded the actual shaded artifact with only a JDK
-parent, generated all 24 YAML documents and opened SQLite with the bundled driver.
-Server/PacketEvents classes remain external. No dependency, lock or verification
-metadata changes were needed for this milestone. Conventional Paper is the selected
-runtime adapter; Folia bootstrap remains explicitly rejected.
+## Replay and measurement evidence
 
-## New evidence
+All 24 normalized packet variants round-trip, including nonfinite diagnostic input.
+Tests reject damaged/truncated/unknown/oversized trace data, invalid ordering and
+mismatched analysis configuration. Record/directory budgets, async draining and
+reload/session recording fences are exercised. Applicable evaluation counters survive
+monitor resets. The corpus runs 15 legitimate synthetic cases and two suspicious cases
+through disk serialization and isolated replay; special mechanics retain uncertainty.
+High-ping replay verifies a 600 ms transaction RTT; the lag fixture preserves loss epoch.
+A 256-session/16,384-packet cleanup load is part of the test suite.
 
-- Independent Bukkit and native-Folia API fixture suites verify routing to global,
-  entity, region and async schedulers, tick/millisecond units, recurring tasks,
-  cancellation, invalid arguments, ownership denial and no Bukkit fallback on Folia.
-- Managed tasks enforce capacity and close admission, handle cancellation/completion
-  before native-handle publication, execute retirement once, release failed tasks,
-  and prevent overlapping callbacks from executing the same action concurrently.
-- SessionAudience sends player/console replies on their owner and rejects replaced
-  sessions; non-player senders cannot be silently elevated into console audiences.
-- The capture coordinator performs no player reads on the global path, limits one
-  pending capture per session, retires old sessions, invalidates rejected captures,
-  and cannot publish queued work after shutdown. Global Folia cadence stays unknown.
-- Unowned capture areas cause no block/chunk/nearby-entity reads. Individual foreign
-  entity bounds are skipped, and skipped entries still count toward the iteration cap.
-- Setback destination ownership is checked before geometry scans. Native-Folia
-  ownership never falls back to synchronous teleport.
-- Bootstrap rejection is tested before conventional scheduler creation, packet
-  listener registration or API registration. All existing regression suites pass.
+The installed CLI separately generated the corpus and replayed walking/high-ping traces.
+Walking produced two **diagnostics**, zero trusted findings and explicit inferred-input /
+unacknowledged-world uncertainty. This is not a zero-diagnostic false-positive claim.
+The larger load processed 200,000 normalized packets across 2,000 sessions with zero
+drops/failures and no retained queues after cleanup, in about 2.40 seconds. It omits
+network decoding, owner captures and server work and does not establish live capacity.
 
-Additional service fixtures verify immutable directory reads, session replacement,
-recipient-owner permission checks and delivery, remote freeze expiry, old-request
-retirement, data-only close, provider invalidation during a query, native async
-teleport without blocking, and expiring source grants before global command dispatch.
-The final build includes all 19 additional service tests since the scheduler-only
-milestone. Intermediate fixture failures were corrected: an incorrect identity reason
-name and Mockito restubbing that accidentally invoked an ownership assertion from the
-test coordinator. The assertions still enforce the same ownership/freshness contracts.
-No tests were disabled or skipped to obtain this result.
+[JMH results and raw measurements](docs/performance/phase11.md) cover throughput,
+sampled latency and allocation for three physics workloads and two evaluators with
+two forks and warmup. Shared-host tails are noisy; no production SLO or optimization
+claim follows from these short measurements.
 
-## Unrun gates and limitations
+Local logs: `/workspace/.tools/phase11-final.log`, `phase11-jmh.log`, `phase11-load.log`
+and `phase11-cli-final.log`. These paths are workspace evidence, not portable downloads.
+The GitHub workflow independently rebuilds/tests and uploads the plugin and tools.
 
-No live Paper or Folia server was run. Native adapter fixtures are not independent
-live-runtime certification. The workspace contains no configured live servers or
-existing EULA files; a test-server availability question remains unanswered. No
-EULA was accepted, external notification sent or remote server changed.
+## Remaining acceptance gates
 
-Native lifecycle/inventory teardown and actual dependency/command integration remain
-release gates in FOLIA.md. **Full Phase 10 is unfinished, and Folia remains disabled.**
-The service migrations, region-local health, native async correction and global command
-handoffs have fixture coverage; they have not been exercised on a live native backend.
-The plugin still compiles against Paper API 1.21.11 on Java 21; Paper 26.2 on Java 25
-and live provider/client combinations remain unverified. Standalone PacketEvents is
-still required.
+Replay is observational; it cannot reproduce all asynchronous owner publications or
+missing prior history. Manual exemption/freeze recordings are rejected. Real-client
+trace conformance and independent live Paper/Folia acceptance were **not run**.
+Folia remains disabled; Phase 10 native lifecycle and service gates in [FOLIA.md](FOLIA.md)
+remain open. Paper 26.2 / Java 25 runtime compatibility is not certified. Punishment /
+setback safeguards and unavailable models remain unchanged.
 
-Diagnostic evidence never scores or authorizes punishment. Automatic punishment
-and setbacks default off, and runtime speculative physics cannot produce verified
-safe positions. Existing unavailable checks, native Bedrock physics and MySQL remain
-separate work. Cancellation cannot undo an already executing callback; callers retain
-session, generation and evidence fences. Existing non-failing test API deprecations,
-JVM class-sharing warnings and Gradle future-version notices remain on the pinned build.
+Usage and limits: [PHASE11.md](PHASE11.md). Previous evidence:
+[Phase 10](docs/validation/phase10.md), [Phase 9](docs/validation/phase9.md).

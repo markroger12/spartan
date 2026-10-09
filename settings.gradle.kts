@@ -12,4 +12,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "AegisAC"
-include("aegis-api", "aegis-common", "aegis-paper")
+include("aegis-api", "aegis-common", "aegis-paper", "aegis-tools")

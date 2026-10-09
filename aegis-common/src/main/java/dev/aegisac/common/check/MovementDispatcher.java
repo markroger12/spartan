@@ -4,6 +4,8 @@ import dev.aegisac.common.config.MovementSettings;
 import java.util.*;
 /** Per-session bounded dispatcher. Uncertainty permits diagnostic records but never increments check buffers. */
 public final class MovementDispatcher {
+    private dev.aegisac.common.packet.PacketMetrics metrics;
+    public void metrics(dev.aegisac.common.packet.PacketMetrics value) { metrics=value; }
     private java.util.function.Consumer<dev.aegisac.common.output.Detection> sink=d->{};
     public void output(java.util.function.Consumer<dev.aegisac.common.output.Detection> sink) { this.sink=sink; }
     private static final class State {
@@ -45,7 +47,9 @@ public final class MovementDispatcher {
         boolean noMismatch=true;
         HashSet<String> reasons=new HashSet<>(f.reasons()); reasons.addAll(gates);
         for(var entry:movement.entrySet()) {
-            CheckId id=entry.getKey(); var value=entry.getValue().evaluate(f);
+            CheckId id=entry.getKey();long started=metrics==null?0:System.nanoTime();
+            var value=entry.getValue().evaluate(f);
+            if(metrics!=null)metrics.movementEvaluation(System.nanoTime()-started);
             boolean bypass=bypasses.contains("*") || bypasses.contains(id.name());
             var specific=new HashSet<>(reasons); if(bypass) specific.add("PERMISSION_BYPASS");
             if(!settings.rules().get(id).enabled()) specific.add("CHECK_DISABLED");
@@ -76,7 +80,7 @@ public final class MovementDispatcher {
         }
         if(id.timing() && !value.applicable() && reasons.isEmpty()) return;
         if(!value.applicable()) { state.buffer.reset(); state.status="SUPPRESSED"; state.reasons=reasons.isEmpty()?Set.of("NOT_APPLICABLE"):Set.copyOf(reasons); return; }
-        state.evaluated++;
+        state.evaluated++; if(metrics!=null)metrics.evaluated();
         boolean mismatch=value.excess()>rule.tolerance();
         state.reasons=Set.copyOf(reasons);
         if(!reasons.isEmpty()) {

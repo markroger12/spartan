@@ -47,6 +47,7 @@ public final class PacketRouter<C> implements AutoCloseable {
         if (closed) throw new IllegalStateException("Packet router is closed");
         java.util.Objects.requireNonNull(connection);
         data.configure(settings);
+        data.configureMetrics(metrics);
         var queue = new SerialPacketQueue(settings.sessionCapacity(), settings.batchSize(), executor,
                 frame -> processor.onPacket(data, frame), data::markGap, data::lossEpoch, clock,
                 problem -> { if (reported.compareAndSet(false, true)) failures.accept(problem); }, metrics);

@@ -53,7 +53,7 @@ public final class PlayerData {
     }
     private java.util.function.Consumer<dev.aegisac.common.output.DetectionEnvelope> output;
     public synchronized void configureOutput(java.util.function.Consumer<dev.aegisac.common.output.DetectionEnvelope> sink) { if(!closed) { output=sink; wireOutput(); } }
-    private void wireOutput() { checks.output(this::emit); combat.output(this::emit); guard.output(this::emit); }
+    private void wireOutput() { checks.metrics(metrics);combat.metrics(metrics);guard.metrics(metrics); checks.output(this::emit); combat.output(this::emit); guard.output(this::emit); }
     private void emit(dev.aegisac.common.output.Detection detection) {
         if(output==null||closed) return;
         var position=state.movement(); var membership=owner.get(); var timing=connection.snapshot(detection.time(),lossEpoch.get(),processedEpoch).timing();
@@ -101,6 +101,27 @@ public final class PlayerData {
     private int historyIndex, historySize;
     private long processedEpoch, lastSequence, inbound, outbound, lastInbound, lastOutbound;
     private boolean closed;
+    private PacketMetrics metrics;
+    private dev.aegisac.common.trace.TraceRecorder trace;
+    private dev.aegisac.common.config.ConfigSnapshot traceConfiguration;
+    private String traceFingerprint="unconfigured";
+    public synchronized void configureMetrics(PacketMetrics value) { metrics=value;wireOutput(); }
+    public synchronized void configureTrace(dev.aegisac.common.trace.TraceRecorder value) {
+        if(closed||trace!=null)throw new IllegalStateException("Trace already attached or session closed");trace=value;
+        traceConfiguration=configuration==null?null:configuration.get();
+        traceFingerprint=dev.aegisac.common.trace.AnalysisFingerprint.of(traceConfiguration);
+    }
+    /** Creates an isolated development session: no platform output service is installed. */
+    public static PlayerData replaySession() { var data=new PlayerData(new UUID(0,0),"Replay",1,0);data.replayOnly=true;return data; }
+    private boolean replayOnly;
+    public synchronized void replay(dev.aegisac.common.trace.TraceEntry entry,dev.aegisac.common.config.ConfigSnapshot config) {
+        if(!replayOnly)throw new IllegalStateException("Only isolated replay sessions accept trace state");
+        if(connection==null)configure(config.pipeline());
+        configurePhysics(config.physics());configureChecks(()->config,entry::health);configureIdentity(entry::providerEpoch);
+        identity.set(entry.identity());owner.set(entry.owner());combatOwner.set(entry.combatOwner());guardOwner.set(entry.guardOwner());
+        lossEpoch.set(entry.lossEpoch());world.restoreForReplay(entry.world());bindEntity(entry.entityId());
+        process(entry.frame(),entry.processedNanos());
+    }
     PlayerData(UUID uuid, String name, long sessionId, long joinedAt) {
         this.uuid = uuid; this.name = name; this.sessionId = sessionId; this.joinedAt = joinedAt;
     }
@@ -116,6 +137,12 @@ public final class PlayerData {
         if (connection == null) throw new IllegalStateException("Session must be configured before processing");
         if (frame.sequence() <= lastSequence) throw new IllegalStateException("Out-of-order session processing");
         var global=configuration==null?null:configuration.get();
+        if(trace!=null&&trace.accepting()) {
+            if(traceConfiguration!=global)trace.close();
+            else trace.offer(new dev.aegisac.common.trace.TraceEntry(frame,now,lossEpoch.get(),global==null?0:global.generation(),traceFingerprint,
+                    identityEpoch.getAsLong(),entityId,world.read(),owner.get(),combatOwner.get(),guardOwner.get(),identity.get(),health.get(),
+                    frozen||!temporaryExemptions.isEmpty()));
+        }
         long providerEpoch=identityEpoch.getAsLong(); // Fence this analysis even if a provider changes while it runs.
         var edition=editionView(frame.observedNanos());
         if(global!=null && (effectiveConfiguration==null||effectiveConfiguration.generation()!=global.generation()||appliedProviderEpoch!=providerEpoch||!appliedIdentity.equals(edition.analysisKey()))) {
@@ -153,6 +180,7 @@ public final class PlayerData {
             if (frame.protocol().teleportConfirmation())
                 connection.timing(new Timing(TimingKind.TELEPORT, value.id(), 0, true), PacketDirection.OUTBOUND, frame.observedNanos());
         }
+        long analysisStarted=metrics==null?0:System.nanoTime();
         if(config!=null) guard.process(config,frame,state.movement(),guardWorld,guardOwner.get(),owner.get(),
                 connection.snapshot(now,lossEpoch.get(),processedEpoch),health.get(),client.bedrock(),acknowledgement,entityId);
         if (!state.apply(frame, acknowledgement)) connection.uncertain(frame.observedNanos());
@@ -162,6 +190,7 @@ public final class PlayerData {
                 connection.snapshot(now,lossEpoch.get(),processedEpoch),owner.get(),health.get(),client.bedrock(),sessionId,entityId);
         if(config!=null) combat.process(config,frame,state.movement(),acknowledgement,
                 connection.snapshot(now,lossEpoch.get(),processedEpoch),owner.get(),combatOwner.get(),health.get(),client.bedrock(),entityId);
+        if(metrics!=null&&config!=null)metrics.checkBatch(System.nanoTime()-analysisStarted);
         if(global!=null) bedrockMonitor.process(global.generation(),global.edition(),edition,frame);
         history[historyIndex] = frame; historyIndex = (historyIndex + 1) % history.length;
         historySize = Math.min(history.length, historySize + 1);
@@ -221,6 +250,7 @@ public final class PlayerData {
         return value;
     }
     synchronized void close() {
+        if(trace!=null)trace.close();
         closed = true; temporaryExemptions.clear(); frozen=false; output=null; markGap(); world.close(); physics.reset(dev.aegisac.common.physics.Uncertainty.BASELINE_MISSING);
         if (history != null) Arrays.fill(history, null);
         identity.set(null); effectiveConfiguration=null; bedrockMonitor.clear();

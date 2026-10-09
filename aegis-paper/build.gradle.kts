@@ -56,7 +56,9 @@ val verifyPluginJar = tasks.register("verifyPluginJar") {
             check(zip.entries().asSequence().none {
                 it.name.startsWith("org/bukkit/") || it.name.startsWith("com/github/retrooper/") ||
                     it.name.startsWith("io/github/retrooper/") || it.name.startsWith("io/netty/") ||
-                    it.name.startsWith("org/yaml/snakeyaml/")
+                    it.name.startsWith("org/yaml/snakeyaml/") || it.name.startsWith("org/openjdk/jmh/") ||
+                    it.name.startsWith("dev/aegisac/tools/") || it.name.startsWith("joptsimple/") ||
+                    it.name.startsWith("org/apache/commons/math3/")
             }) { "Server dependencies or unrelocated YAML leaked into the distribution" }
         }
         // Load only the distribution and JDK: this catches missing/shading-broken runtime dependencies.
