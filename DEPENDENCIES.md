@@ -88,14 +88,14 @@ The JDBC driver version is distinct from Minecraft/server compatibility.
 
 ## Fresh GitHub runner metadata (2026-10-09)
 
-A fresh runner exposed 18 missing metadata pins that the original Gradle cache did
+A fresh runner exposed 19 missing metadata pins that the original Gradle cache did
 not need to fetch. Version selections and dependency locks are unchanged. Existing
 verification entries were retained; metadata verification remains enabled.
 
-Fourteen artifacts were fetched over Maven Central HTTPS and checked against its published
+Fifteen artifacts were fetched over Maven Central HTTPS and checked against its published
 SHA-256 sidecars: Groovy BOM 4.0.27 POM/module, Jackson BOM 2.19.2 POM, Jackson parent
 2.19.3 POM, JUnit BOM 5.13.1/5.13.4/5.14.1/5.14.2 modules, and FasterXML parent 69 POM. The remaining SHA-256-verified metadata comprises JUnit
-BOM 5.12.2/5.10.3/5.7.1 modules, JUnit BOM 6.1.3 POM and Groovy BOM 4.0.22 module.
+BOM 5.12.2/5.10.3/5.9.3/5.7.1 modules, JUnit BOM 6.1.3 POM and Groovy BOM 4.0.22 module.
 
 Four artifacts do not publish SHA-256 sidecars. Their SHA-256 pins were calculated
 only after checking the detached PGP signatures from Maven Central:
