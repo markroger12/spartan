@@ -1,0 +1,31 @@
+config-version: 1
+# Requires a verified same-session safe position and fresh owner-thread collision checks.
+# Current speculative physics cannot produce a verified runtime candidate.
+enabled: false
+mode: NONE
+allow-experimental: false
+disable-in-panic: true
+minimum-vl: 3.0
+minimum-confidence: 90.0
+cooldown-ms: 3000
+maximum-age-ms: 500
+maximum-distance: 8.0
+checks:
+  SpeedA: false
+  FlyA: false
+  TimerA: false
+  BlinkA: false
+  GroundA: false
+  NoFallA: false
+  StepA: false
+  ClimbA: false
+  LiquidA: false
+  PhaseA: false
+  AccelerationA: false
+  GravityA: false
+  AirJumpA: false
+  SprintA: false
+  SneakA: false
+  NoSlowA: false
+  ElytraA: false
+  VehicleA: false

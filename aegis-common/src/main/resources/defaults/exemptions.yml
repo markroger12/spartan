@@ -1,0 +1,8 @@
+config-version: 1
+# Explicit exemptions suppress evidence and reset buffers; they never relax uncertainty gates.
+enabled: true
+permission-bypass: true
+creative-or-spectator: true
+flight: true
+# Mapping of exact world names to booleans, for example worlds: {lobby: true}.
+worlds: {}

@@ -1,0 +1,37 @@
+# Phase 6 diagnostic policy. No setting enables cancellation or punishment.
+config-version: 1
+enabled: true
+evidence-capacity: 32
+grace-ms: 2000
+maximum-delay-ms: 250
+checks:
+  # Reported displacement while a server menu is observed open
+  InventoryMoveA:
+    enabled: true
+    limit: 0.05
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  # Sprint start while a server menu is observed open
+  InventorySprintA:
+    enabled: true
+    limit: 0.0
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  # Held hotbar slot outside 0 through 8
+  InvalidSlotA:
+    enabled: true
+    limit: 0.0
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  # Click references a different observed server menu
+  ImpossibleInventoryA:
+    enabled: true
+    limit: 0.0
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  # Unsupported negative click slot excluding outside-click sentinel
+  SlotSpoofA:
+    enabled: true
+    limit: 0.0
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic

@@ -1,0 +1,160 @@
+# Experimental combat observations only; no enforcement. Existing enabled: false remains disabled.
+config-version: 1
+enabled: true
+maximum-targets: 64
+history-size: 8
+pending-attacks: 32
+statistics-size: 40
+evidence-capacity: 32
+history-ms: 2000
+interpolation-ms: 150
+swing-window-ms: 200
+target-window-ms: 100
+minimum-statistics: 24
+grace-ms: 2000
+maximum-delay-ms: 250
+velocity-window-ms: 400
+box-expansion: 0.1
+click-variation: 0.025
+repeated-intervals: 0.85
+snap-degrees: 60.0
+alignment-degrees: 1.0
+rotation-variation: 0.02
+tiny-fall: 0.03
+velocity-fraction: 0.1
+checks:
+  ReachA:
+    enabled: true
+    tolerance: 0.1
+    increment: 1.0
+    decay-per-second: 0.25
+    buffer-threshold: 4.0
+    minimum-samples: 3
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  HitboxA:
+    enabled: true
+    tolerance: 0.0
+    increment: 1.0
+    decay-per-second: 0.25
+    buffer-threshold: 4.0
+    minimum-samples: 3
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  AimA:
+    enabled: true
+    tolerance: 0.0
+    increment: 1.0
+    decay-per-second: 0.25
+    buffer-threshold: 4.0
+    minimum-samples: 3
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  RotationA:
+    enabled: true
+    tolerance: 0.0
+    increment: 1.0
+    decay-per-second: 0.25
+    buffer-threshold: 4.0
+    minimum-samples: 3
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  AutoClickerA:
+    enabled: true
+    tolerance: 0.0
+    increment: 1.0
+    decay-per-second: 0.25
+    buffer-threshold: 4.0
+    minimum-samples: 3
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  MultiAuraA:
+    enabled: true
+    tolerance: 0.0
+    increment: 1.0
+    decay-per-second: 0.25
+    buffer-threshold: 4.0
+    minimum-samples: 3
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  KillAuraA:
+    enabled: true
+    tolerance: 0.0
+    increment: 1.0
+    decay-per-second: 0.25
+    buffer-threshold: 4.0
+    minimum-samples: 3
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  NoSwingA:
+    enabled: true
+    tolerance: 0.0
+    increment: 1.0
+    decay-per-second: 0.25
+    buffer-threshold: 4.0
+    minimum-samples: 3
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  AttackPatternA:
+    enabled: true
+    tolerance: 0.0
+    increment: 1.0
+    decay-per-second: 0.25
+    buffer-threshold: 4.0
+    minimum-samples: 3
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  CriticalsA:
+    enabled: true
+    tolerance: 0.0
+    increment: 1.0
+    decay-per-second: 0.25
+    buffer-threshold: 4.0
+    minimum-samples: 3
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  VelocityA:
+    enabled: true
+    tolerance: 0.0
+    increment: 1.0
+    decay-per-second: 0.25
+    buffer-threshold: 4.0
+    minimum-samples: 3
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  AimAssistA:
+    enabled: true
+    tolerance: 0.0
+    increment: 1.0
+    decay-per-second: 0.25
+    buffer-threshold: 4.0
+    minimum-samples: 3
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  InvalidAttackA:
+    enabled: true
+    tolerance: 0.0
+    increment: 1.0
+    decay-per-second: 0.25
+    buffer-threshold: 4.0
+    minimum-samples: 3
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  AttackTimingA:
+    enabled: true
+    tolerance: 0.0
+    increment: 1.0
+    decay-per-second: 0.25
+    buffer-threshold: 4.0
+    minimum-samples: 3
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic
+  ImpossibleInteractionA:
+    enabled: true
+    tolerance: 0.0
+    increment: 1.0
+    decay-per-second: 0.25
+    buffer-threshold: 4.0
+    minimum-samples: 3
+    cooldown-ms: 1000
+    bedrock-mode: diagnostic

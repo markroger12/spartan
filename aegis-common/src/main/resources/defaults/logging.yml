@@ -1,0 +1,7 @@
+config-version: 1
+# Optional; no database is needed for detection or staff alerts.
+enabled: false
+diagnostics: true
+plain-text: false
+# JSON Lines rotates between two bounded files.
+maximum-file-bytes: 10485760
