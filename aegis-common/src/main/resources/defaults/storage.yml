@@ -1,0 +1,5 @@
+config-version: 1
+# SQLite is the default log backend when logging is enabled.
+enabled: true
+backend: sqlite
+maximum-rows: 100000

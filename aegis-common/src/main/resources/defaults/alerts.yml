@@ -1,0 +1,12 @@
+config-version: 1
+# Staff opt in with /ac alerts or /ac verbose. Diagnostic records require verbose.
+enabled: true
+chat: true
+console: false
+action-bar: false
+hover: true
+suggest-teleport: false
+cooldown-ms: 1000
+server: server
+format: '&8[&bAegisAC&8] &f%player% &7%check% %type% VL=%vl% risk=%risk% confidence=%confidence%'
+hover-format: '%description% | %bedrock% %client_version% | ping=%ping% jitter=%jitter% TPS=%tps% MSPT=%mspt% | buffer=%buffer% | %world% %x%,%y%,%z% | %evidence%'

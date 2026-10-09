@@ -1,0 +1,41 @@
+config-version: 1
+# Aggregate packet counters exposed by /ac performance. Session counters always run.
+# No raw payloads or platform packet objects are retained.
+packet-metrics: true
+# Pipeline settings apply at startup. Reload rejects changes to this section
+# instead of replacing queues or correlating responses under incompatible rules.
+pipeline:
+  # Fixed worker pool; players are processed serially with fair bounded batches.
+  workers: 2
+  executor-capacity: 4096
+  session-capacity: 256
+  batch-size: 64
+  # Larger packets are observed as metadata only, and state is marked uncertain.
+  maximum-packet-bytes: 8192
+  # Bound outstanding acknowledgements and retained compact input history per player.
+  pending-transactions: 128
+  history-capacity: 32
+  transaction-timeout-ms: 10000
+  # A stall or analysis loss creates uncertainty, never a violation/exemption blanket.
+  stall-ms: 250
+  uncertainty-ms: 1000
+  # EWMA coefficient for RTT and RTT-variation telemetry, not detection sensitivity.
+  smoothing: 0.125
+  # Optional modern (1.17+) ping probes. Legacy clients use passive window/keepalive timing.
+  # Off by default until the operator validates the server/proxy combination.
+  active-probes: false
+  probe-interval-ticks: 20
+
+# Phase 6 diagnostic simulation. All settings below require a restart.
+physics:
+  enabled: true
+  # Round-robin player captures per server tick; stale players remain uncertain.
+  captures-per-tick: 2
+  # Horizontal block radius. Vertical capture is from feet - 2 to feet + 3.
+  radius: 2
+  # Hard per-capture limits. Partial captures are explicitly uncertain.
+  maximum-blocks: 512
+  maximum-boxes: 512
+  maximum-entities: 16
+  # Snapshot lifetime in milliseconds, measured at packet observation time.
+  maximum-age-ms: 250
