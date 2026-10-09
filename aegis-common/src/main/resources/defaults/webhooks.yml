@@ -1,0 +1,12 @@
+config-version: 1
+# Keep this URL private. Never paste it into console output or chat.
+enabled: false
+url: ''
+alerts: true
+diagnostics: false
+punishments: true
+startup: false
+errors: false
+timeout-ms: 3000
+retry-limit: 2
+minimum-interval-ms: 1000

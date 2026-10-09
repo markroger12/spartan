@@ -1,0 +1,4 @@
+config-version: 1
+# Lenient policy is separate from other profiles. Detectors arrive in later phases.
+# Phase 6 only supports observation; this setting cannot enable enforcement.
+mode: observe-only

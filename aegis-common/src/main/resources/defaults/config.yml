@@ -1,0 +1,9 @@
+# AegisAC Phase 6: experimental world, inventory, protocol, movement and combat diagnostics. No punishments run.
+config-version: 1
+# Difficulty is independent of the Java/Bedrock edition policy.
+default-profile: balanced
+# Example: world-profiles: {practice: strict, lobby: lenient}
+world-profiles: {}
+
+# Additional aliases; restart required. /ac and /aegisac remain available.
+command-aliases: {}

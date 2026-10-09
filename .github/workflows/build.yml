@@ -1,0 +1,65 @@
+name: Build and download AegisAC
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: build-${{ github.event.pull_request.head.ref || github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: gradle
+      - name: Verify wrapper integrity
+        run: echo '238e777fcddd7e34f9708186085def2abd6e08e658505b38718d79d74c21abd5  gradle/wrapper/gradle-wrapper.jar' | sha256sum -c -
+      - name: Build, test and verify distribution
+        run: ./gradlew --no-daemon clean build --no-build-cache --console=plain
+      - name: Prepare plugin download
+        run: |
+          mkdir -p dist
+          cp aegis-paper/build/libs/AegisAC-*.jar dist/
+          (cd dist && sha256sum AegisAC-*.jar > SHA256SUMS)
+          printf '%s\n' "Source commit: $GITHUB_SHA" "Build run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" 'Requires standalone PacketEvents 2.14.0.' 'Development snapshot: Folia runtime support remains disabled.' > dist/BUILD_INFO.txt
+      - name: Upload plugin download
+        id: plugin
+        uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5
+        with:
+          name: AegisAC-Phase11
+          path: dist/
+          if-no-files-found: error
+          retention-days: 90
+      - name: Add download link to build summary
+        env:
+          ARTIFACT_URL: ${{ steps.plugin.outputs.artifact-url }}
+        run: |
+          printf '## AegisAC plugin download\n\n[Download AegisAC-Phase11](%s) while signed in to GitHub. Extract the ZIP to obtain the plugin jar and SHA256SUMS.\n\nRequires standalone PacketEvents 2.14.0. Folia runtime support remains disabled.\n' "$ARTIFACT_URL" >> "$GITHUB_STEP_SUMMARY"
+      - name: Upload offline development tools
+        uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5
+        with:
+          name: AegisAC-Phase11-tools
+          path: aegis-tools/build/distributions/*.zip
+          if-no-files-found: error
+          retention-days: 90
+      - name: Upload build reports
+        uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5
+        if: always()
+        with:
+          name: build-reports
+          path: |
+            **/build/reports/tests/
+            **/build/reports/dependency-verification/
+          if-no-files-found: ignore
+          retention-days: 14
