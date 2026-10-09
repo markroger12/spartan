@@ -60,7 +60,7 @@ One session exists per joined UUID. Join/quit own registry membership; packet
 callbacks never create sessions. Late packets cannot resurrect disconnected
 players. A session contains client identity, ordered connection/transaction observations,
 raw movement/rotation, action/inventory/teleport state and bounded recent history.
-Collision snapshots and diagnostic physics candidates are present; violation state awaits its producer. Public consumers receive immutable
+Collision snapshots, diagnostic physics candidates and bounded output/violation state are present. Public consumers receive immutable
 snapshots, never mutable session objects or Bukkit entities.
 
 Phase 2 callbacks validate a byte budget and decode selected PacketEvents wrappers
@@ -242,3 +242,11 @@ asynchronous owner publications and missing prior history are reported fidelity 
 load harness; no JMH dependency reaches `aegis-paper`. Check counters persist across
 monitor replacements and timings distinguish geometry evaluators from whole analysis
 batches. See PHASE11.md for exact bounds, commands and unresolved acceptance gates.
+
+## Phase 12 candidate preparation
+
+Historical upgrade fixtures live in common test resources. The separate tools module
+validates settings in an isolated temporary copy. Python release tooling packages only
+checked build artifacts, bundled defaults, documentation and source/status/checksum
+metadata. CI signing is a separate push-only job using OIDC/Sigstore, while PR builds
+remain read-only. Compatibility/live-observation flags stay explicit in release/status.json.

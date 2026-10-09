@@ -4,7 +4,7 @@
    `javac -version` both report 21. The wrapper downloads and verifies Gradle.
 2. From the checkout root run `./gradlew build`. On Windows use `gradlew.bat build`.
 3. On an isolated Paper 1.21.11 test server, install the official PacketEvents
-   2.14.0 Spigot release and `aegis-paper/build/libs/AegisAC-0.10.0-SNAPSHOT.jar`
+   2.14.0 Spigot release and `aegis-paper/build/libs/AegisAC-0.12.0-SNAPSHOT.jar`
    in `plugins/`. Spigot/Purpur and other versions need separate validation.
 4. Start the server using its documented instructions and your own Minecraft EULA
    agreement. This project does not accept the EULA or start a public server.
@@ -18,7 +18,7 @@
 7. Disconnect the client: active sessions must return to zero. Stop the server and
    confirm listener cleanup. Live processes must be started again on new machines.
 
-The application does not require a database, webhook, API key or secret for detection or staff administration in Phase 9.
+The application does not require a database, webhook, API key or secret for detection or staff administration in this candidate.
 Do not install both the shaded and unbundled AegisAC artifacts. Avoid server `/reload`
 commands and third-party plugin hot unloaders; use `/ac reload` for settings and a
 full server restart for jars. API classloading and PacketEvents injection are not
@@ -156,3 +156,10 @@ fixtures do not certify runtime behavior. See FOLIA.md for native lifecycle gate
 and the independent live test protocol. Region-aware world capture adds one scheduler
 handoff; capture freshness/revision checks still apply, and queue rejection invalidates
 geometry. No additional dependency, service or credential is needed for the build.
+
+## Current candidate and upgrade checks
+
+See COMPATIBILITY.md before selecting a live server version. Use UPGRADING.md for
+backup/preflight/rollback and OPERATIONS.md for staged alert-only observation. Download
+the shaded jar from the successful Phase 12 candidate build and verify RELEASE.md's
+checksums/provenance. Offline tools are a separate distribution, not a server plugin.

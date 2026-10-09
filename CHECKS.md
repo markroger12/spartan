@@ -1,6 +1,7 @@
-# Check catalog — Phase 8
+# Check catalog — development candidate 0.12
 
-**15 experimental evaluators; 3 unavailable movement models. Actions default off.** Every working
+**72 catalog IDs: 61 implemented experimental evaluators/diagnostics, 11 unavailable
+models. Movement has 15 evaluators and 3 unavailable models. Actions default off.** Every working
 entry is experimental, supports only the described subset, and has Bedrock/UNKNOWN
 policy `diagnostic` or `disabled`. None is recommended for automatic punishment.
 Runtime geometry remains uncertain; diagnostics never increase buffers. See
@@ -31,11 +32,11 @@ All working entries use configurable per-check buffers, consecutive samples,
 time-based decay and cooldown-limited compact evidence. Join/teleport/velocity/lag
 and world/session loss gates apply before trusted buffering. Explicit exemptions
 suppress diagnostic records too. Per-check disablement never disables its neighbors.
-Malformed coordinates remain uncertainty; protocol/exploit checks arrive in Phase 6.
+Malformed movement remains uncertainty; implemented protocol/exploit diagnostics are listed below.
 
 NoSlowA/ElytraA/VehicleA have no fake detector classes. Configuration refuses to
-enable them. Combat, world, player, inventory, protocol and exploit check files
-remain reserved and cannot enable unavailable subsystems. Full movement-model
+enable them. The combat/world/player/inventory/protocol/exploit categories below have implemented
+diagnostic rules; their explicitly unavailable models cannot be enabled. Full movement-model
 coverage and independent legitimate live traces are still prerequisites for a
 production detection claim. Phase 8 separately aggregates only eligible findings; diagnostic evidence never contributes.
 

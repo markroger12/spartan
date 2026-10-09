@@ -1,6 +1,6 @@
 # Folia support status and Phase 10 ownership audit
 
-**Folia runtime support remains disabled in 0.10.0-SNAPSHOT. Phase 10 is unfinished.**
+**Folia runtime support remains disabled in 0.12.0-SNAPSHOT. Phase 10 is unfinished.**
 The scheduler and service migrations described in [PHASE10.md](PHASE10.md) have
 fixture coverage. The descriptor has no `folia-supported` flag and bootstrap rejects
 Folia before creating services. Adding the flag alone cannot enable this build.

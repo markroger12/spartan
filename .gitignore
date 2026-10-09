@@ -8,3 +8,5 @@ dist/
 
 # Real development traces contain private session observations.
 *.aegistrace
+__pycache__/
+*.pyc
