@@ -29,7 +29,7 @@ README/API/check catalog/version references and PROJECT_TREE.md are audited. The
 existing Folia rejection, experimental models, disabled actions and uncertainty
 requirements remain explicit.
 
-The user identified OuiPanel server `d5579107` for a live trial. The provided console
+The user identified an operator-supplied OuiPanel server for a live trial. The provided console
 URL does not supply authentication, current PacketEvents version or completed trial
 results. Staged live observation and platform/provider certification are therefore
 pending evidence. This milestone prepares a development candidate; it does not certify

@@ -2,7 +2,7 @@
 
 This candidate remains experimental. Begin on an isolated operator-controlled server
 with an existing EULA agreement. The hosted trial target supplied by the operator is
-OuiPanel server `d5579107`; authentication and current dependency versions still need
+an operator-supplied OuiPanel server; authentication and current dependency versions still need
 verification. This document is a trial procedure, not a completed production observation.
 
 ## Before enabling the candidate

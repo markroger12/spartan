@@ -25,7 +25,7 @@ Current runtime geometry/input/client acknowledgement uncertainty prevents trust
 movement/combat findings. Bedrock policy modes describe diagnostic handling, not
 certified detection support.
 
-The selected hosted trial target is OuiPanel server `d5579107`. A console-page URL
+The selected hosted trial target is an operator-supplied OuiPanel server. A console-page URL
 alone supplies neither authenticated API access nor current version evidence.
 Record actual runtime/dependency versions in OPERATIONS.md's trial record before
 claiming acceptance. Update this matrix only with identifiable test results/logs.

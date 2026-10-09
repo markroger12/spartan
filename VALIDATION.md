@@ -46,7 +46,7 @@ no runtime hot-loop optimization or new capacity claim was made in Phase 12.
 
 ## Pending live acceptance
 
-The operator supplied OuiPanel server `d5579107` and stated a test server with an existing
+The operator supplied an operator-supplied OuiPanel server and stated a test server with an existing
 EULA agreement is available. The workspace has no authenticated panel binding or signed-in
 browser access. Requests to its console/API-shaped route return dashboard HTML, not server
 state. Current Paper/PacketEvents versions and installed candidate behavior are unverified.
